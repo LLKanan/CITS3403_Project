@@ -1,0 +1,14 @@
+.box {
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 200px;
+    min-width: 40%;
+    margin-left: 10%;
+    position: relative;
+    transition: 0.5s;
+    padding-left: 5%;
+  }
+
+.box:hover {
+    transform: scale(1.05);
+  }

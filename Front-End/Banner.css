@@ -1,0 +1,13 @@
+body {
+    min-width: 1400px;
+}
+
+.header {
+    border-bottom: 3px solid black;
+    min-height: 115px;
+    text-align: left;
+}
+#tabs {
+    text-align: center;
+    padding-top: 4%;
+}
