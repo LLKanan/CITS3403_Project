@@ -4,7 +4,6 @@ Homepage(Introduction)
 Quiz List
 Leaderboard
 
-
 Logged in as user
 Hey,Name
 Homepage
