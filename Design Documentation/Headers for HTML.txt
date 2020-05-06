@@ -1,0 +1,22 @@
+Not login
+Login/Signout
+Homepage(Introduction)
+Quiz List
+Leaderboard
+
+Logged in as user
+Hey,Name
+Homepage
+Quiz List page
+Leaderboard
+My results page
+Logout(click to logout)
+
+Logged in as admin
+Hey,Name
+Homepage
+Quiz List page
+Leaderboard page
+Marking page
+Modify Quiz Page(Add,edit,remove quizzes)
+Modify Users Page(Add,edit,remove users)
