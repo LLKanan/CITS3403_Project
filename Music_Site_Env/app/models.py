@@ -1,0 +1,54 @@
+from app import db
+from werkzeug.security import generate_password_hash, check_password_hash
+
+class User(db.Model):
+    user_id = db.Column(db.Integer, primary_key = True)
+    username = db.Column(db.String(64), index = True, unique = True)
+    email = db.Column(db.String(128), index = True, unique = True)
+    password_hash = db.Column(db.String(128))
+    points = db.Column(db.Integer)
+    results = db.relationship('Results', backref = 'user', lazy= 'dynamic')
+    def hash_password(self, password):
+        self.password_hash = generate_password_hash(password)
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+    def __repr__(self):
+        return '<User {}>'.format(self.username)
+
+class Quiz(db.Model):
+    quiz_id = db.Column(db.Integer, primary_key = True) 
+    quiz_name = db.Column(db.String(128), index = True)
+    removed = db.Column(db.Boolean)
+    question = db.relationship('Question', backref = 'quiz', lazy = 'dynamic')
+    results = db.relationship('Results', backref = 'quiz', lazy = 'dynamic')
+    def __repr__(self):
+        return '<Quiz {}>'.format(self.quiz_name)
+
+class Question(db.Model):
+    question_id = db.Column(db.Integer, primary_key = True, index = True)
+    quiz_id = db.Column(db.Integer, db.ForeignKey('quiz.quiz_id'))
+    youtube_link = db.Column(db.String(256))
+    duration = db.column(db.Integer)
+    correct_answer = db.Column(db.String(256))
+    option_1 = db.Column(db.String(256))
+    option_2 = db.Column(db.String(256))
+    option_3 = db.Column(db.String(256))
+    results = db.relationship('Results', backref = 'quiz', lazy= 'dynamic')
+    def __repr__(self):
+        return '<Question {}'.format(self.correct_answer)
+
+class Results(db.Model):
+    result_id = db.Column(db.Integer, primary_key = True, index= True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
+    quiz_id = db.Column(db.Integer, db.ForeignKey('quiz.quiz_id'))
+    question_id = db.Column(db.Integer, db.ForeignKey('question.question_id'))
+    user_answer = db.Column(db.String(256))
+    correct = db.Column(db.Boolean)
+    def __repr__(self):
+        return '<Results {}'.format(self.correct)
+
+
+
+
+
+
