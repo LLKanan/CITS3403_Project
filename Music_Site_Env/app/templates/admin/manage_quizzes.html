@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>List of Quizzes</h1>
+	<table style="width:100%">
+		<tr>
+			<th>Quiz_ID</th>
+			<th>Quiz_Name</th>
+			<th>Quiz_Image</th>
+		</tr>
+		{% for result in results %}
+			<tr> 
+				<th>{{result[0]}}</th>
+				<th>{{result[1]}}</th>
+				<th><img src={{result[3]}} alt="Image for quiz"></th>
+				<th><a href="{{ url_for('remove_quiz',quiz_id = result[0])}}">Remove</a></th>
+			</tr>
+	{% endfor %}
+{% endblock %}

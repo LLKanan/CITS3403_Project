@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>List of users</h1>
+	<table style="width:100%">
+		<tr>
+			<th>User_ID</th>
+			<th>Username</th>
+			<th>Email</th>
+			<th>Points</th>
+			<th>Manage</th>
+		</tr>
+		{% for result in results %}
+			<tr> 
+				<th>{{result[0]}}</th>
+				<th>{{result[1]}}</th>
+				<th>{{result[2]}}</th>
+				<th>{{result[4]}}</th>
+				<th><a href="{{ url_for('remove_user',user_id = result[0])}}">Remove</a></th>
+			</tr>
+	{% endfor %}
+{% endblock %}

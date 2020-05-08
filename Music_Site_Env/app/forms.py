@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,BooleanField,SubmitField
+from wtforms import StringField,PasswordField,BooleanField,SubmitField,IntegerField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from app.models import User,Quiz,Question,Results
 
@@ -26,3 +26,17 @@ class RegistrationForm(FlaskForm):
 		if user is not None:
 			raise ValidationError('Email address already in use, try a different email address.')
 
+class CreateQuizForm(FlaskForm):
+	name = StringField('Quiz Name', validators = [DataRequired()])
+	image = StringField('Image_URL', validators = [DataRequired()])
+	submit = SubmitField('Create Questions')
+
+class CreateQuestionForm(FlaskForm):
+	youtube_link = StringField('Youtube Video Link', validators = [DataRequired()])
+	start_time = IntegerField('Video Start Time in seconds', validators = [DataRequired()])
+	duration = IntegerField('Playtime in seconds', validators = [DataRequired()])
+	correct_answer = StringField('Correct Option', validators = [DataRequired()])
+	option_1 = StringField('Multiple Choice option 2', validators = [DataRequired()])
+	option_2 = StringField('Multiple Choice option 3', validators = [DataRequired()])
+	option_3 = StringField('Multiple Choice option 4', validators = [DataRequired()])
+	submit = SubmitField('Add Question')

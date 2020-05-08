@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>Create Question</h1>
+	<form action="" method="post">
+		{{ form.hidden_tag() }}
+		<p>
+			{{ form.youtube_link.label }}<br>
+			{{ form.youtube_link(size=128) }}<br>
+			{% for error in form.youtube_link.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.start_time.label }}<br>
+			{{ form.start_time(size=128) }}<br>
+			{% for error in form.start_time.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.duration.label }}<br>
+			{{ form.duration(size=128) }}<br>
+			{% for error in form.duration.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.correct_answer.label }}<br>
+			{{ form.correct_answer(size=128) }}<br>
+			{% for error in form.correct_answer.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.option_1.label }}<br>
+			{{ form.option_1(size=128) }}<br>
+			{% for error in form.option_1.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.option_2.label }}<br>
+			{{ form.option_2(size=64) }}<br>
+			{% for error in form.option_2.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.option_3.label }}<br>
+			{{ form.option_3(size=128) }}<br>
+			{% for error in form.option_3.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>{{ form.submit() }}</p>
+	</form>
+{% endblock %}

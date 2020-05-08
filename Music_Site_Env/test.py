@@ -1,0 +1,17 @@
+from app import db
+from app.models import User,Quiz,Question,Results
+quiz1 = Quiz(quiz_name = "Quiz 1", removed = False)
+quiz2 = Quiz(quiz_name = "Quiz 2", removed = True)
+quiz3 = Quiz(quiz_name = "Quiz 3", removed = False)
+quiz4 = Quiz(quiz_name = "Quiz 4", removed = False)
+quiz5 = Quiz(quiz_name = "Quiz 2", removed = False)
+db.session.add(quiz1)
+db.session.commit()
+db.session.add(quiz2)
+db.session.commit()
+db.session.add(quiz3)
+db.session.commit()
+db.session.add(quiz4)
+db.session.commit()
+db.session.add(quiz5)
+db.session.commit()

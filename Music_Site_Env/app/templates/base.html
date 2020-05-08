@@ -8,14 +8,20 @@
 			<!-- Place holder for header --!>
 			Music Site:
 	   	<!-- Placeholder for navitation menu --!>	
-			<a href="{{ url_for('index') }}">Home</a>
-			{% if current_user.is_anonymous %}
-			<a href="{{ url_for('login') }}">Login</a>
-			{% else %}
-			<a href="{{ url_for('logout') }}">Logout</a>
+			{% if current_user.get_id() != 0 %}
+				<a href="{{ url_for('index') }}">Home</a>
+				{% if current_user.is_anonymous %}
+					<a href="{{ url_for('login') }}">Login</a>
+				{% else %}
+					<a href="{{ url_for('logout') }}">Logout</a>
+				{% endif %}
 			{% endif %}
 			{% if current_user.get_id() == 0 %}
-			<a href="{{ url_for('admin') }}">Admin</a>
+				<a href="{{ url_for('admin_home') }}">Admin Home</a>
+				<a href="{{ url_for('manage_users') }}">Manage Users</a>
+				<a href="{{ url_for('create_quiz') }}">Create Quiz</a>
+				<a href="{{ url_for('manage_quizzes') }}">Manage Quizzes</a>
+				<a href="{{ url_for('logout') }}">Logout</a>
 			{% endif %}
 		</div>
 		<hr>

@@ -22,6 +22,7 @@ class User(UserMixin, db.Model):
 class Quiz(db.Model):
     quiz_id = db.Column(db.Integer, primary_key = True) 
     quiz_name = db.Column(db.String(128), index = True)
+    quiz_image = db.Column(db.String(256), index = True)
     removed = db.Column(db.Boolean)
     question = db.relationship('Question', backref = 'quiz', lazy = 'dynamic')
     results = db.relationship('Results', backref = 'quiz', lazy = 'dynamic')
