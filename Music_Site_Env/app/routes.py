@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, url_for, request
 from werkzeug.urls import url_parse
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, CreateQuizForm, CreateQuestionForm
+from app.forms import LoginForm, RegistrationForm, CreateQuizForm, CreateQuestionForm, QuestionForm
 from app.models import User,Quiz,Question,Results
 from flask_login import login_required, current_user, login_user, logout_user
 
@@ -49,6 +49,67 @@ def register():
 		return redirect(url_for('login'))
 	return render_template('register.html', title='Registration page', form = form)
 
+@login_required
+@app.route('/view_quizzes',methods=['GET', 'POST'])
+def view_quizzes():
+	results = db.session.execute('Select * from Quiz where removed == 0')
+	return render_template('./view_quizzes.html',title='View Quizzes',results = results)
+
+def submit_answer(quiz_id,question_list,user_answer,current_question):
+	result = Results(user_id = current_user.get_id(), quiz_id = quiz_id,question_id = question_list[current_question][0], user_answer = user_answer, correct = (True if (user_answer == question_list[current_question][4]) else False))
+	db.session.add(result)
+	db.session.commit()
+
+@login_required
+@app.route('/start_quiz/<int:quiz_id>/<current_question>',methods=['GET', 'POST'])
+def start_quiz(quiz_id,current_question):
+	form = QuestionForm()
+	current_question = int(current_question)
+	question_list = (db.session.execute('Select * from Question where quiz_id ==' + str(quiz_id) + " ORDER BY question_id")).fetchall()
+	quiz_name = (db.session.execute('Select * from Quiz where quiz_id ==' + str(quiz_id))).first()	
+	temp_list = question_list[current_question][4:]
+	option_list = []
+	for option in temp_list:
+		option_list.append((option,option))
+	form.set_options(option_list)
+	if form.validate_on_submit():
+		submit_answer(quiz_id,question_list,form.answer.data,current_question)
+		if current_question + 1 < len(question_list):
+			return redirect(url_for('start_quiz',quiz_id = quiz_id, current_question = current_question + 1))
+		else:
+			return redirect(url_for('quiz_results',quiz_id = quiz_id))
+	return render_template('./question_page.html', title = quiz_name[1], question_list = question_list,current_question = current_question, quiz_name = quiz_name[1], form = form)
+
+
+@login_required
+@app.route('/quiz_results/<quiz_id>')
+def quiz_results(quiz_id):
+	user_id = current_user.get_id()
+	list_questions = db.session.execute('Select * from Question where quiz_id ==' + str(quiz_id) + " ORDER BY question_id").fetchall()
+	results = []
+	correct_counter = 0
+	total = 0
+	for question in list_questions:
+		temp = []
+		question_id = question[0]
+		correct_answer = question[4]
+		user_answer = db.session.execute('Select * From Results where user_id == ' + str(user_id) + " and question_id == " + str(question_id) + " order by result_id DESC").first()
+		temp.append(total + 1)
+		temp.append(correct_answer)
+		temp.append(user_answer[4])
+		if user_answer[5] == 1:
+			temp.append("Correct")
+			correct_counter += 1
+		if user_answer[5] == 0:
+			temp.append("Incorrect")
+		total += 1
+		results.append(temp)
+	quiz_info = (db.session.execute('Select * from Quiz where quiz_id == ' + str(quiz_id))).first()
+	return render_template("./quiz_results.html",results = results, correct_counter = correct_counter, total = total,quiz_info = quiz_info)
+
+#-----------------------------------------------------------------------------------------------------
+#--------------------------------------------ADMIN PAGES----------------------------------------------
+#-----------------------------------------------------------------------------------------------------
 @app.route('/admin/home')
 def admin_home():
 	if current_user.get_id() != 0:
@@ -132,9 +193,23 @@ def create_question(quiz_id):
 		return redirect(url_for('index'))
 	form = CreateQuestionForm()
 	if form.validate_on_submit():
-		question = Question(quiz_id = quiz_id, youtube_link = form.youtube_link.data, duration = form.duration.data, correct_answer = form.correct_answer.data, option_1 = form.option_1.data, option_2 = form.option_2.data, option_3 = form.option_3.data)
+		temp_link = "https://www.youtube.com/embed/" + ((str(form.youtube_link.data[17:])).strip()) + "?start=" + ((str(form.start_time.data)).strip())
+		question = Question(quiz_id = quiz_id, youtube_link = temp_link, duration = form.duration.data, correct_answer = form.correct_answer.data, option_1 = form.option_1.data, option_2 = form.option_2.data, option_3 = form.option_3.data)
 		db.session.add(question)
 		db.session.commit()
-		return redirect(url_for('create_question',quiz_id = quiz_id))
+		if form.add_question.data:
+			flash("Successfully added question")
+			return redirect(url_for('create_question',quiz_id = quiz_id))
+		elif form.finalise.data:
+			return redirect(url_for('finalise_quiz',quiz_id = quiz_id))
 	return render_template('./admin/create_question.html',form = form)
 
+@app.route('/admin/review_quiz/<int:quiz_id>')
+def finalise_quiz(quiz_id):
+	if current_user.get_id() != 0:
+		flash("You don't have access to this page")
+		return redirect(url_for('index'))
+	quiz_info = db.session.execute('Select * from Quiz where quiz_id == ' + str(quiz_id))
+	results = db.session.execute('Select * from Question where quiz_id == ' + str(quiz_id))
+	return render_template('./admin/view_questions.html',title= str(quiz_id) + ' Questions',quiz_info = quiz_info,results = results)
+	

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,BooleanField,SubmitField,IntegerField
+from wtforms import StringField,PasswordField,BooleanField,SubmitField,IntegerField,SelectField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from app.models import User,Quiz,Question,Results
 
@@ -30,6 +30,11 @@ class CreateQuizForm(FlaskForm):
 	name = StringField('Quiz Name', validators = [DataRequired()])
 	image = StringField('Image_URL', validators = [DataRequired()])
 	submit = SubmitField('Create Questions')
+	
+	def validate_name(self, name):
+		query = Quiz.query.filter_by(quiz_name = name.data).filter_by(removed = 0).first()
+		if query is not None:
+			raise ValidationError('Sorry this quiz name is already taken. Try a different quiz name.')
 
 class CreateQuestionForm(FlaskForm):
 	youtube_link = StringField('Youtube Video Link', validators = [DataRequired()])
@@ -39,4 +44,11 @@ class CreateQuestionForm(FlaskForm):
 	option_1 = StringField('Multiple Choice option 2', validators = [DataRequired()])
 	option_2 = StringField('Multiple Choice option 3', validators = [DataRequired()])
 	option_3 = StringField('Multiple Choice option 4', validators = [DataRequired()])
-	submit = SubmitField('Add Question')
+	add_question = SubmitField('Add question')
+	finalise = SubmitField('Finalise Quiz')
+
+class QuestionForm(FlaskForm):
+	answer = SelectField("Select answer")
+	submit_answer = SubmitField('Submit Answer')
+	def set_options(self, option_list):
+		self.answer.choices = option_list

@@ -41,7 +41,7 @@
 		</p>
 		<p>
 			{{ form.option_2.label }}<br>
-			{{ form.option_2(size=64) }}<br>
+			{{ form.option_2(size=128) }}<br>
 			{% for error in form.option_2.errors %}
 			<span style="color: red;">[{{ error }}]</span>
 			{% endfor %}
@@ -53,6 +53,7 @@
 			<span style="color: red;">[{{ error }}]</span>
 			{% endfor %}
 		</p>
-		<p>{{ form.submit() }}</p>
+		<p>{{ form.add_question() }}</p>
+		<p>{{ form.finalise() }}</p>
 	</form>
 {% endblock %}

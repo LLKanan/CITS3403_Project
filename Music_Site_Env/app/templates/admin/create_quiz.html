@@ -14,7 +14,7 @@
 		<p>
 			{{ form.image.label }}<br>
 			{{ form.image(size=128) }}<br>
-			{% for error in form.name.errors %}
+			{% for error in form.image.errors %}
 			<span style="color: red;">[{{ error }}]</span>
 			{% endfor %}
 		</p>
