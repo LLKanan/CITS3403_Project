@@ -19,26 +19,25 @@ Temporary front end:
 -User login
 -User index page
 -sign up page
+-List of available Quizzes
+-Question page
 
 User backend:
 -Completed Login
 -Completed Signup
 -PW Hashing
 -Navigation element
+-List of available Quizzes
+-Results(Final quiz page)
 
 ----------------------------------------------------------------------------------------
 TODO:
 Backend Admin:
 -Managing Results
--Creating Questions for quizzes(Partial)
-  -Correct storage of urls and ensure that they can be turned placed into music player
 
-User + Frontend + Backend:
--List of available Quizzes
--Question page
-  -Music Player
-  -Timer for music + Time limit for question(Kahoot style)
-  -Javascript replay music 
--Results(Final quiz page)
+Backend User:
+-Music Player
+-Timer for music + Time limit for question(Kahoot style)
+-Javascript replay music 
 -Leaderboard
 -List of all quiz results
