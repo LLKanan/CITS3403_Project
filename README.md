@@ -39,5 +39,5 @@ Backend User:
 -Music Player
 -Timer for music + Time limit for question(Kahoot style)
 -Javascript replay music 
--Leaderboard
+-Leaderboard(Optional)
 -List of all quiz results
