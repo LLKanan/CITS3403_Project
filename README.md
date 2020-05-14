@@ -1,12 +1,6 @@
 TODO BACKEND:
 
--Youtube Link Create Question page validation
-
--Question Page Validation
-
--Final Question Button in Question page
-
--Modified Previous question button in Question page
+-Youtube Link Create Question page validation(Ensure that all video links are working)
 
 TODO Frontend:
 Modify all skeleton code
