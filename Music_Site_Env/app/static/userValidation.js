@@ -134,7 +134,7 @@ function validateQuestionForm()
 	}
 	else if (youtube_link.startsWith("https://youtu.be/"))
 	{
-		document.getElementById("youtube_link_validate_message").innerHTML = ""
+		document.getElementById("youtube_link_validate_message").innerHTML = null
 	}
 	else
 	{
@@ -160,7 +160,7 @@ function validateQuestionForm()
 	}
 	else
 	{
-		document.getElementById("start_time_validate_message").innerHTML = ""
+		document.getElementById("start_time_validate_message").innerHTML = null
 	}
 
 	//Duration validation
@@ -181,7 +181,7 @@ function validateQuestionForm()
 	}
 	else
 	{
-		document.getElementById("duration_validate_message").innerHTML = ""
+		document.getElementById("duration_validate_message").innerHTML = null
 	}
 	return ret
 }
@@ -190,14 +190,14 @@ function validateQuizQuestionForm()
 {
 	ret = true
 	var answer = document.forms["quiz_question_form"]["answer"].value;
-	if (value == "Select Answer")
+	if (answer == "None")
 	{
 		document.getElementById("answer_validate_message").innerHTML = "ERROR: Please select a valid answer"
 		ret = false
 	}
 	else
 	{
-		document.getElementById("answer_validate_message").innerHTML = ""
+		document.getElementById("answer_validate_message").innerHTML = null
 	}
 	return ret
 }

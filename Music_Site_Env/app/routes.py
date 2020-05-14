@@ -115,9 +115,7 @@ def start_quiz(quiz_id,current_question):
 				return redirect(url_for('start_quiz',quiz_id = quiz_id, current_question = current_question + 1))
 			else:
 				return redirect(url_for('quiz_results',quiz_id = quiz_id))
-		elif form.previous_question.data:
-			return redirect(url_for('start_quiz',quiz_id = quiz_id, current_question = current_question -1))
-	return render_template('./question_page.html', title = quiz_name[1], question_list = question_list,current_question = current_question, quiz_name = quiz_name[1], form = form)
+	return render_template('./question_page.html', title = quiz_name[1], question_list = question_list,current_question = current_question, quiz_name = quiz_name[1], form = form, quiz_id = quiz_id)
 
 def submit_final_results(quiz_id,user_id,correct_counter):
 	check = (db.session.execute('Select * from final_results where quiz_id == ' + str(quiz_id) + ' and user_id == '+ str(user_id))).first()

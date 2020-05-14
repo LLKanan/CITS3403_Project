@@ -49,7 +49,7 @@ class CreateQuestionForm(FlaskForm):
 class QuestionForm(FlaskForm):
 	answer = SelectField("Select answer")
 	submit_answer = SubmitField('Next Question')
-	previous_question = SubmitField('Previous Question')
+	#previous_question = SubmitField('Previous Question')
 	def set_options(self, option_list):
 		self.answer.choices = option_list
 	def validate_answer(self, answer):
