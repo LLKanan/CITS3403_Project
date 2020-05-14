@@ -40,7 +40,6 @@ def logout():
 def register():
 	if current_user.is_authenticated:
 		return redirect(url_for('index'))
-	#form = RegistrationForm(prefix = "registration_form")
 	form = RegistrationForm()
 	if form.validate_on_submit():
 		user = User(username=str(form.username.data).strip(), email=form.email.data)
@@ -70,7 +69,6 @@ def view_quizzes():
 	return render_template('./view_quizzes.html',title='View Quizzes',results = results)
 
 def submit_answer(quiz_id,question_list,user_answer,current_question):
-	#result = (db.session.execute('Select * from results where question_id == '  + str(question_list[current_question][0]) + ' and user_id == ' + str(current_user.get_id()))).first()
 	check = (db.session.execute('Select * from final_results where quiz_id == ' + str(quiz_id) + ' and user_id == '+ str(current_user.get_id()))).first()
 	if check == None:
 		result = Results.query.filter_by(question_id = question_list[current_question][0]).filter_by(user_id = current_user.get_id()).first()
@@ -123,12 +121,13 @@ def start_quiz(quiz_id,current_question):
 
 def submit_final_results(quiz_id,user_id,correct_counter):
 	check = (db.session.execute('Select * from final_results where quiz_id == ' + str(quiz_id) + ' and user_id == '+ str(user_id))).first()
-	if check == None and quiz_id != 0:
+	if check == None:
+		#print("new result",str(quiz_id))
 		finalResult = finalResults(user_id = user_id,quiz_id = quiz_id,total_correct = correct_counter)
 		db.session.add(finalResult)
 		db.session.commit()	
 
-@app.route('/quiz_results/<quiz_id>')
+@app.route('/quiz_results/<quiz_id>',methods = ['GET','POST'])
 @login_required
 def quiz_results(quiz_id):
 	user_id = current_user.get_id()
@@ -152,7 +151,8 @@ def quiz_results(quiz_id):
 		total += 1
 		results.append(temp)
 	quiz_info = (db.session.execute('Select * from Quiz where quiz_id == ' + str(quiz_id))).first()
-	submit_final_results(quiz_id,user_id,correct_counter)
+	if int(quiz_id) != 0:
+		submit_final_results(quiz_id,user_id,correct_counter)
 	return render_template("./quiz_results.html",results = results, correct_counter = correct_counter, total = total,quiz_info = quiz_info)
 
 @app.route('/my_results')
