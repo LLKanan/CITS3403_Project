@@ -1,22 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
+	<script type="text/javascript" src="{{ url_for('static',filename='userValidation.js')}}"></script>
 	<h1>Sign In</h1>
-	<form action = "" method = "post" novalidate>
+	<form name = "login_form" onsubmit="return validateLoginForm()" method = "post">
 		{{ form.hidden_tag() }}
-		<p>
+		<div>
 			{{ form.username.label }}<br>
 			{{ form.username(size = 32) }}<br>
+			<p id = "username_validate_msg"></p>
 			{% for error in form.username.errors %}
 			<span style ="color: red;">[{{error}}]</span>
 			{% endfor %}
-		</p>
-		<p>
+		</div>
+		<div>
 			{{ form.password.label }}<br>
 			{{ form.password(size = 32) }}<br>
+			<p id = "password_validate_msg"></p>
 			{% for error in form.password.errors%}
 			<span style="color: red;">[{{ error }}]</span>
 			{% endfor %}
-		</p>
+		</div>
 		<p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
 		<p>{{ form.submit() }}</p>
 	</form>

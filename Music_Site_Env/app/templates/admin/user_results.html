@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<h1>List of users</h1>
+	<h1>{{title}}</h1>
 	<table style="width:100%">
 		<tr>
 			<th>User_ID</th>
 			<th>Username</th>
-			<th>Email</th>
-			<th>Manage</th>
+			<th>Final Mark</th>
+			<th>View Answers</th>
 		</tr>
 		{% for result in results %}
 			<tr> 
 				<th>{{result[0]}}</th>
 				<th>{{result[1]}}</th>
 				<th>{{result[2]}}</th>
-				<th><a href="{{ url_for('remove_user',user_id = result[0])}}">Remove</a></th>
+				<th><a href="{{ url_for('view_answers',quiz_id = quiz_id,user_id = result[0])}}">View Answers</a></th>
 			</tr>
 		{% endfor %}
 	</table>

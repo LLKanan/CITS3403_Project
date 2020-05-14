@@ -8,7 +8,6 @@ class User(UserMixin, db.Model):
 	username = db.Column(db.String(64), index = True, unique = True)
 	email = db.Column(db.String(128), index = True, unique = True)
 	password_hash = db.Column(db.String(128))
-	points = db.Column(db.Integer)
 	results = db.relationship('Results', backref = 'user', lazy= 'dynamic')
 	def set_password(self, password):
 		self.password_hash = generate_password_hash(password)
@@ -23,7 +22,7 @@ class Quiz(db.Model):
     quiz_id = db.Column(db.Integer, primary_key = True) 
     quiz_name = db.Column(db.String(128), index = True)
     quiz_image = db.Column(db.String(256), index = True)
-    removed = db.Column(db.Boolean)
+    hidden = db.Column(db.Boolean)
     question = db.relationship('Question', backref = 'quiz', lazy = 'dynamic')
     results = db.relationship('Results', backref = 'quiz', lazy = 'dynamic')
     def __repr__(self):
@@ -32,12 +31,13 @@ class Quiz(db.Model):
 class Question(db.Model):
     question_id = db.Column(db.Integer, primary_key = True, index = True)
     quiz_id = db.Column(db.Integer, db.ForeignKey('quiz.quiz_id'))
-    youtube_link = db.Column(db.String(256))
+    youtube_id = db.Column(db.String(256)) 
     duration = db.Column(db.Integer)
     correct_answer = db.Column(db.String(256))
     option_1 = db.Column(db.String(256))
     option_2 = db.Column(db.String(256))
     option_3 = db.Column(db.String(256))
+    start_time = db.Column(db.Integer)
     results = db.relationship('Results', backref = 'question', lazy= 'dynamic')
     def __repr__(self):
         return '<Question {}'.format(self.correct_answer)
@@ -51,6 +51,12 @@ class Results(db.Model):
     correct = db.Column(db.Boolean)
     def __repr__(self):
         return '<Results {}'.format(self.correct)
+
+class finalResults(db.Model):
+	final_result_id = db.Column(db.Integer, primary_key = True, index = True)
+	user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
+	quiz_id = db.Column(db.Integer, db.ForeignKey('quiz.quiz_id'))
+	total_correct = db.Column(db.Integer)
 
 @login.user_loader
 def load_user(user_id):

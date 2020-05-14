@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField,PasswordField,BooleanField,SubmitField,IntegerField,SelectField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
-from app.models import User,Quiz,Question,Results
+from app.models import User,Quiz,Question,Results,finalResults
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators = [DataRequired()])
@@ -17,7 +17,7 @@ class RegistrationForm(FlaskForm):
 	submit = SubmitField('Register')
 
 	def validate_username(self, username):
-		user = User.query.filter_by(username = username.data).first()
+		user = User.query.filter_by(username = str(username.data).strip()).first()
 		if user is not None:
 			raise ValidationError('Username is already taken, try a different Username.')
 
@@ -32,7 +32,7 @@ class CreateQuizForm(FlaskForm):
 	submit = SubmitField('Create Questions')
 	
 	def validate_name(self, name):
-		query = Quiz.query.filter_by(quiz_name = name.data).filter_by(removed = 0).first()
+		query = Quiz.query.filter_by(quiz_name = str(name.data).strip()).filter_by(hidden = 0).first()
 		if query is not None:
 			raise ValidationError('Sorry this quiz name is already taken. Try a different quiz name.')
 
@@ -45,10 +45,14 @@ class CreateQuestionForm(FlaskForm):
 	option_2 = StringField('Multiple Choice option 3', validators = [DataRequired()])
 	option_3 = StringField('Multiple Choice option 4', validators = [DataRequired()])
 	add_question = SubmitField('Add question')
-	finalise = SubmitField('Finalise Quiz')
 
 class QuestionForm(FlaskForm):
 	answer = SelectField("Select answer")
-	submit_answer = SubmitField('Submit Answer')
+	submit_answer = SubmitField('Next Question')
+	previous_question = SubmitField('Previous Question')
 	def set_options(self, option_list):
 		self.answer.choices = option_list
+	def validate_answer(self, answer):
+		if answer == None:
+			raise ValidationError('Failed to select answer.')
+

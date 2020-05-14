@@ -1,11 +1,67 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<h1>{{quiz_name}}</h1>
-		<iframe width="420" height="315" src ={{question_list[current_question][2]}}></iframe>
-		<form action="" method = 'POST'>
+	<script type="text/javascript" src="{{ url_for('static',filename='userValidation.js')}}"></script>
+	<h1>{{quiz_name}} - {{current_question + 1}}</h1>
+		<!-- <iframe width="420" height="315" src ={{question_list[current_question][2]}}></iframe> --!>
+		<div id = "hider">
+			<div id="player"></div>
+		</div>
+		<button onclick = "myFunction({{question_list[current_question][8]}},{{question_list[current_question][3]}})">Play Song Clip</button>
+		<form name = "quiz_question_form" onsubmit="return validateQuizQuestionForm()" method = "post">
 		{{ form.hidden_tag() }}
 		<p>{{ form.answer.label }} {{ form.answer }}</p>
+		<p id = "answer_validate_msg"></p>
+		{% for error in form.answer.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+		{% endfor %}
+		{% if current_question != 0%}
+			<p> {{ form.previous_question() }} </p>
+		{% endif %}
 		<p>{{ form.submit_answer() }}</p>
 		</form>
+	
+	<script>
+		// 2. This code loads the IFrame Player API code asynchronously.
+		var tag = document.createElement('script');
+
+		tag.src = "https://www.youtube.com/iframe_api";
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+		// 3. This function creates an <iframe> (and YouTube player)
+		//    after the API code downloads.
+		var player;
+		function onYouTubeIframeAPIReady() {
+			player = new YT.Player('player', {
+			height: '390',
+			width: '640',
+			videoId: '{{question_list[current_question][2]}}',
+			startSeconds: 40,
+			events: {
+				'onReady': onPlayerReady
+				}
+			});
+		}
+		// 4. The API will call this function when the video player is ready.
+		function onPlayerReady(event) {
+		//player.seekTo({{question_list[current_question][8]}});
+		//setTimeout(function(){ player.pauseVideo(); }, ({{question_list[current_question][3]}} * 1000)
+		//event.target.playVideo();
+		}
+		function myFunction(start_time,play_time){
+			player.setVolume(50)
+			player.playVideo()
+			player.seekTo(start_time)
+			setTimeout(function(){ player.pauseVideo(); }, (play_time * 1000));
+		}
+		// 5. The API calls this function when the player's state changes.
+		//    The function indicates that when playing a video (state=1),
+		//    the player should play for six seconds and then stop.
+		var done = false;
+		function stopVideo() {
+			player.stopVideo();
+		}
+		document.getElementById("hider").style.display = "none";
+	</script>
 {% endblock %}

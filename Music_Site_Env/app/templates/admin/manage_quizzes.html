@@ -12,8 +12,14 @@
 			<tr> 
 				<th>{{result[0]}}</th>
 				<th>{{result[1]}}</th>
-				<th><img src={{result[3]}} alt="Image for quiz"></th>
-				<th><a href="{{ url_for('remove_quiz',quiz_id = result[0])}}">Remove</a></th>
+				<th><img src={{result[2]}} alt="Image for quiz"></th>
+				{% if result[3] == 0 %}
+					<th><a href="{{ url_for('hide_quiz',quiz_id = result[0])}}">Hide Quiz</a></th>
+				{% endif %}
+				{% if result[3] == 1 %}
+					<th><a href="{{ url_for('hide_quiz',quiz_id = result[0])}}">Show Quiz<a></th>
+				{% endif %}
+				<th><a href="{{ url_for('remove_quiz',quiz_id = result[0])}}">Remove Quiz</a></th>
 			</tr>
 		{% endfor %}
 	</table>

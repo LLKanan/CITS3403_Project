@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
+	<script type="text/javascript" src="{{ url_for('static',filename='userValidation.js')}}"></script>
 	<h1>Create Quiz</h1>
-	<form action="" method="post">
+	<form name = "quiz_form" onsubmit="return validateQuizForm()" method = "post">
 		{{ form.hidden_tag() }}
 		<p>
 			{{ form.name.label }}<br>
 			{{ form.name(size=64) }}<br>
+			<p id = "name_validate_msg"></p>
 			{% for error in form.name.errors %}
 			<span style="color: red;">[{{ error }}]</span>
 			{% endfor %}
@@ -14,6 +16,7 @@
 		<p>
 			{{ form.image.label }}<br>
 			{{ form.image(size=128) }}<br>
+			<p id = "image_validate_msg"></p>
 			{% for error in form.image.errors %}
 			<span style="color: red;">[{{ error }}]</span>
 			{% endfor %}
