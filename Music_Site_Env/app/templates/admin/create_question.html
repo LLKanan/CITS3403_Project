@@ -7,12 +7,18 @@
 		{{ form.hidden_tag() }}
 		<div>
 			{{ form.youtube_link.label }}<br>
-			{{ form.youtube_link(size=128) }}<br>
+			{{ form.youtube_link(size=128) }}
+			<button type = "button" onclick = "checkVidID()">Check Video ID</button>
+			<br>
 			<p id = "youtube_link_validate_message"></p>
 			{% for error in form.youtube_link.errors %}
 			<span style="color: red;">[{{ error }}]</span>
 			{% endfor %}
 		</div>
+		<iframe id="player"
+				width="640" height="360"
+				src=""
+			></iframe>
 		<div>
 			{{ form.start_time.label }}<br>
 			{{ form.start_time(size=128) }}<br>
