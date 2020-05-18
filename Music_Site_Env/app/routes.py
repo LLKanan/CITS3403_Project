@@ -10,7 +10,9 @@ import random
 @app.route('/index')
 @login_required
 def index():
-    return render_template('index.html', title = 'Home')
+	if current_user.get_id() == 0:
+			return redirect(url_for('admin_home'))
+	return render_template('index.html', title = 'Home')
 
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
