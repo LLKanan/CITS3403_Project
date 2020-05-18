@@ -12,7 +12,7 @@
                 min-width: 1400px;
 				max-width: 100%;
 				/* background-image: linear-gradient(rgba(44, 41, 41,0.6),rgba(112, 111, 110,0.6)), url('https://www.ppt-backgrounds.net/uploads/music-notes-graphic-slides.jpg'); */
-				background-color: rgb(27, 32, 34);
+				background-color: #000000;
 				color: white;
 				font-family: arial;
 			}
@@ -21,17 +21,30 @@
                 width: auto;
                 padding-left: 20px;
                 padding-right: 20px;
-                float: left;
+				float: left;
+				transition: 0.5s;
+				border-radius: 15px;
+			}
+
+			h3:hover {
+				transition: 0.5s;
+				background-color: #ffcd1f;
 			}
 			
 			h3 a {
-  				color: white;
+				color: white;
+				transition: 0.5s;
+				text-decoration: none;
 			}
 			h3 a:visited {
-  				color: white;
+				color: white;
+				transition: 0.5s;
+				text-decoration: none;
 			}
-			h3 a:hover a:active, a:focus {
- 			 	color:white;
+			h3 a:hover, a:active, a:focus {
+				color:white;
+				transition: 0.5s;
+				text-decoration: none;
 			}
 
 			.white {
@@ -62,10 +75,13 @@
                 /* min-height: 115px; */
 				text-align: left;
 				/* background-color: rgb(61, 15, 61); */
+				background-color: #1b2022;
+				width: 100.9%;
 			}
 
 			#title {
 				padding-top: 1%;
+				padding-bottom: 1%;
 			}
 
 			#login {
@@ -86,6 +102,7 @@
             #nav {
                 text-align: center;
 				padding-top: 1%;
+				padding-bottom: 1%;
             }
 
             #footer {
@@ -96,6 +113,7 @@
                 text-align: left;
 				border-top: 3px solid white;
 				padding-left: 20px;
+				background-color: #1b2022;
             }
 		</style>
 
@@ -126,7 +144,7 @@
 					<h3><a href="{{ url_for('manage_users') }}">Manage Users</a></h3>
 					<h3><a href="{{ url_for('create_quiz') }}">Create Quiz</a></h3>
 					<h3><a href="{{ url_for('manage_quizzes') }}">Manage Quizzes</a></h3>
-					<h3><a href="{{ url_for('manage_answers') }}">Manage Answers</a></h3>
+					<h3><a href="{{ url_for('manage_answers') }}">View Answers</a></h3>
 				{% endif %}
 				{% if current_user.is_anonymous %}
 					<h3><a href="{{ url_for('login') }}" id="login">Login</a></h3>

@@ -3,17 +3,23 @@
 {% block content %}
 	<style>
 		h2 {
-			margin-top: 15%;
-			margin-left: 30%;
-			width: 40%;
+			margin-top: 3%;
+			margin-left: 5%;
+			width: 50%;
 			border: 0px solid;
-            padding: 50px 60px;
+            padding: 25px 30px;
             -webkit-box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75);
             -moz-box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75);
 			box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75);
-			background-color: rgb(204, 150, 49);
+			background-color: #1b2022;
 			border-radius: 15px;
+			transition: 0.5s;
 		}
+
 	</style>
-	<h2>The available pages are for maintenance of the website by admins.</h2>
+	<h2>Manage Users: This page contains list of users and gives admin ability to remove users</h2>
+	<h2>Create Quiz: This page allows admins to create a new quiz</h2>
+	<h2>Manage Quizzes: This page allows the admin to hide quizzes from users and remove quizzes <br><br>
+		Warning : Removing quizzes will also remove the user results,  and questions related to that quiz</h2>
+	<h2>View Answers: Gives admin the ability to view user's answers. Sorted by Quiz>User>User's Answers</h2>
 {% endblock %}

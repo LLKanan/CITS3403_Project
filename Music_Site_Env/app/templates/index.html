@@ -3,17 +3,19 @@
 {% block content %}
 	<style>
 		h2 {
-			margin-top: 15%;
-			margin-left: 30%;
+			margin-top: 3%;
+			margin-left: 5%;
 			width: 40%;
 			border: 0px solid;
             padding: 50px 60px;
             -webkit-box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75);
             -moz-box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75);
 			box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75);
-			background-color: rgb(204, 150, 49);
+			background-color: #1b2022;
 			border-radius: 15px;
+			transition: 0.5s;
 		}
+
 	</style>
 	<h2>Welcome to our CITS3403 music quiz site, {{ current_user.username }}!. Navigate to <a href="{{ url_for('view_quizzes') }}">available quizzes</a> and test your music knowledge!</h2>
 {% endblock %}
