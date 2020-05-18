@@ -1,8 +1,10 @@
 body{
-	background-color:#181818;
-	color:#FFFFFF;
+    background image:background-image:linear-gradient(rgba(44, 41, 41,0.5),rgba(112, 111, 110,0.5)),
+        url(music.jpg);
+    background-image: -webkit-linear-gradient(rgba(44, 41, 41,0.5),rgba(112, 111, 110,0.5)),
+        url(music.jpg);
+    background-image: -webkit-linear-gradient(rgba(44, 41, 41,0.5),rgba(112, 111, 110,0.5)),
+        url(music.jpg);
+    background-image: -moz-linear-gradient(rgba(44, 41, 41,0.5),rgba(112, 111, 110,0.5)),
+        url(music.jpg); 
 }
-header{
-	background:#181818
-}
-

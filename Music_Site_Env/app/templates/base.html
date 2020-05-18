@@ -11,8 +11,10 @@
 			body {
                 min-width: 1400px;
 				max-width: 100%;
-				background-image: linear-gradient(rgba(44, 41, 41,0.6),rgba(112, 111, 110,0.6)), url('https://www.ppt-backgrounds.net/uploads/music-notes-graphic-slides.jpg');
+				/* background-image: linear-gradient(rgba(44, 41, 41,0.6),rgba(112, 111, 110,0.6)), url('https://www.ppt-backgrounds.net/uploads/music-notes-graphic-slides.jpg'); */
+				background-color: rgb(27, 32, 34);
 				color: white;
+				font-family: arial;
 			}
 
             h3 {
@@ -22,14 +24,18 @@
                 float: left;
 			}
 			
-			a {
+			h3 a {
   				color: white;
 			}
-			a:visited {
+			h3 a:visited {
   				color: white;
 			}
-			a:hover, a:active, a:focus {
+			h3 a:hover a:active, a:focus {
  			 	color:white;
+			}
+
+			.white {
+				color: white;
 			}
 
 			input {
@@ -53,12 +59,33 @@
 
             #header {
                 /* border-bottom: 3px solid black; */
-                min-height: 115px;
-                text-align: left;
-            }
+                /* min-height: 115px; */
+				text-align: left;
+				/* background-color: rgb(61, 15, 61); */
+			}
+
+			#title {
+				padding-top: 1%;
+			}
+
+			#login {
+				/* border: 2px solid white;
+				border-radius: 10px;
+				background-color: black; */
+				/* width: auto;
+                padding-left: 20px;
+				padding-right: 20px;
+				float: left; */
+			}
+			
+			#project {
+				font-size: 36px;
+				padding-top: 1%;
+			}
+
             #nav {
                 text-align: center;
-				padding-top: 4%;
+				padding-top: 1%;
             }
 
             #footer {
@@ -85,24 +112,26 @@
 	</head>
 	<body>
 		<div id="header" class="row container-fluid">
-			<div class="col-sm-4">
-				<h1><b>CITS3403 Music Quiz</b></h1>
-				{% if current_user.is_anonymous %}
-					<a href="{{ url_for('login') }}">Login</a>
-				{% else %}
-					<a href="{{ url_for('logout') }}">Logout</a>
-				{% endif %}
+			<div id="title" class="col-sm-3">
+				<div id="project"><b>CITS3403 Music Quiz</b></div>
 			</div>
-			<div id="nav" class="col-sm-8">
+			<div id="nav" class="col-sm-9">
 				{% if current_user.get_id() != 0 %}
 					<h3><a href="{{ url_for('index') }}">Home</a></h3>
 					<h3><a href="{{ url_for('view_quizzes') }}">Available Quizzes</a></h3>
+					<h3><a href="{{ url_for('my_results') }}">My Results</a></h3>
 				{% endif %}
 				{% if current_user.get_id() == 0 %}
 					<h3><a href="{{ url_for('admin_home') }}">Admin Home</a></h3>
 					<h3><a href="{{ url_for('manage_users') }}">Manage Users</a></h3>
 					<h3><a href="{{ url_for('create_quiz') }}">Create Quiz</a></h3>
 					<h3><a href="{{ url_for('manage_quizzes') }}">Manage Quizzes</a></h3>
+					<h3><a href="{{ url_for('manage_answers') }}">Manage Answers</a></h3>
+				{% endif %}
+				{% if current_user.is_anonymous %}
+					<h3><a href="{{ url_for('login') }}" id="login">Login</a></h3>
+				{% else %}
+					<h3><a href="{{ url_for('logout') }}" id="login">Logout</a></h3>
 				{% endif %}
 			</div>
 		</div>
@@ -116,7 +145,6 @@
 		{% endif%}
 		{% endwith %}
 		{% block content %}{%endblock%}
-		<hr>
 		<div id="footer">
 			<h6>Authored by <a href="LinkedIn.com">Benjamin Nguyen</a>, <a href="LinkedIn.com">Zak Kazakoff</a>, <a href="LinkedIn.com">Femi Arowosafe</a>, <a href="LinkedIn.com">Paula Gatei</a></h6>
 		</div>
