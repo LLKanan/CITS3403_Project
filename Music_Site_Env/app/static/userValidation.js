@@ -125,6 +125,9 @@ function checkVidID()
 		//document.forms["question_form"]["youtube_link"].value = youtube_link
 		document.getElementById("youtube_link").value = youtube_link.replace("https://www.youtube.com/watch?v=","https://youtu.be/")
 		document.getElementById("youtube_link_validate_message").innerHTML = "Modified Youtube Link for compatibility. Original Link : " + youtube_link
+		video_id = document.getElementById("youtube_link").value.slice(17,);
+		var source = "https://www.youtube.com/embed/".concat(video_id,"?enablejsapi=1")
+		document.getElementById("player").src = source
 	}
 	else if (youtube_link.startsWith("https://youtu.be/"))
 	{
