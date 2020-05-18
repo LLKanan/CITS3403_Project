@@ -115,16 +115,10 @@ function validateQuizForm()
 	return ret
 }
 
-function validateQuestionForm()
+function checkVidID()
 {
+	
 	var youtube_link = document.forms["question_form"]["youtube_link"].value;
-	var	start_time = document.forms["question_form"]["start_time"].value;
-	var	duration = document.forms["question_form"]["duration"].value;
-	var	correct_answer = document.forms["question_form"]["correct_answer"].value;
-	var	option_1 = document.forms["question_form"]["option_1"].value;
-	var	option_2 = document.forms["question_form"]["option_2"].value;
-	var	option_3 = document.forms["question_form"]["option_3"].value;	
-	var ret = true
 	//Youtube link validation
 	if (youtube_link.startsWith("https://www.youtube.com/watch?v="))
 	{
@@ -135,11 +129,39 @@ function validateQuestionForm()
 	else if (youtube_link.startsWith("https://youtu.be/"))
 	{
 		document.getElementById("youtube_link_validate_message").innerHTML = null
+		video_id = youtube_link.slice(17,);
+		var source = "https://www.youtube.com/embed/".concat(video_id,"?enablejsapi=1")
+		document.getElementById("player").src = source
 	}
 	else
 	{
 		document.getElementById("youtube_link_validate_message").innerHTML = "ERROR: Invalid link must be of format https://youtu.be/video_id or https://www.youtube.com/watch?v=video_id"
-		ret = false
+	}
+}
+
+function validateQuestionForm()
+{
+	var youtube_link = document.forms["question_form"]["youtube_link"].value;
+	var start_time = document.forms["question_form"]["start_time"].value;
+	var duration = document.forms["question_form"]["duration"].value;
+	var correct_answer = document.forms["question_form"]["correct_answer"].value;
+	var option_1 = document.forms["question_form"]["option_1"].value;
+	var option_2 = document.forms["question_form"]["option_2"].value;
+	var option_3 = document.forms["question_form"]["option_3"].value;	
+	var ret = true
+	//Youtube link validation
+	if (youtube_link.startsWith("https://www.youtube.com/watch?v="))
+	{
+		document.getElementById("youtube_link").value = youtube_link.replace("https://www.youtube.com/watch?v=","https://youtu.be/")
+		document.getElementById("youtube_link_validate_message").innerHTML = "Modified Youtube Link for compatibility. Original Link : " + youtube_link
+	}
+	else if (youtube_link.startsWith("https://youtu.be/"))
+	{
+		document.getElementById("youtube_link_validate_message").innerHTML = null
+	}
+	else
+	{
+		document.getElementById("youtube_link_validate_message").innerHTML = "ERROR: Invalid link must be of format https://youtu.be/video_id or https://www.youtube.com/watch?v=video_id"
 	}
 
 	//Start_time validation
