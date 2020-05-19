@@ -10,12 +10,13 @@
 	<link href="https://fonts.googleapis.com/css2?family=Lato&family=Raleway:wght@400;500&family=Roboto&display=swap" rel="stylesheet">
 	<style>
 		body {
-			min-width: 1400px;
+			min-width: 1600px;
 			max-width: 100%;
+			min-height: 800px;
 			/* background-image: linear-gradient(rgba(44, 41, 41,0.6),rgba(112, 111, 110,0.6)), url('https://www.ppt-backgrounds.net/uploads/music-notes-graphic-slides.jpg'); */
 			background-color: #000000;
 			color: white;
-			font-family: arial;
+			font-family: "Raleway", sans-serif;
 		}
 
 		h1 {
@@ -88,6 +89,12 @@
 			width: 100.9%;
 		}
 
+		#warning {
+			font-size: 16px;
+			color: red;
+			padding-left: 15%;
+		}
+
 		#title {
 			padding-top: 1%;
 			padding-bottom: 1%;
@@ -155,21 +162,9 @@
 		}
 		.alignTop{
 			margin-top:60px;
-
 		}
 
 	</style>
-
-	<script>
-		document.addEventListener('click', function() {
-			if (!event.target.matches("#night")) return;
-			event.preventDefault();
-			document.body.style.backgroundColor = "black";
-			document.body.style.color = "silver";
-			document.getElementById("header").style.borderBottom = "3px solid silver";
-			document.getElementById("footer").style.borderTop = "3px solid silver";
-		})
-	</script>
 </head>
 
 <body>
@@ -199,11 +194,11 @@
 	</div>
 	{% with messages = get_flashed_messages() %}
 	{% if messages %}
-	<ul>
+	<div id="warning">
 		{% for message in messages %}
-		<li>{{ message }}</li>
+		<p>{{ message }}</p>
 		{% endfor %}
-	</ul>
+	</div>
 	{% endif%}
 	{% endwith %}
 	{% block content %}{%endblock%}

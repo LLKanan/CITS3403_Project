@@ -1,9 +1,50 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+	<style>
+
+		button:hover {
+			transform: scale(1.05);
+		}
+
+
+		input:hover {
+			transform: scale(1.05);
+			transition: 0.5s;
+			background-color: #ffcd1f;
+			color: black;
+		}
+
+		#previous {
+			float: left;
+			text-decoration: none;
+			color: white;
+			transition: 0.5s;
+		}
+
+		/* #previous:hover {
+			transform: scale(1.05);
+			transition: 0.5s;
+		} */
+
+		#next {
+			float: right;
+			transition: 0.5s;
+		}
+
+		/* #next:hover {
+			transform: scale(1.05);
+			transition: 0.5s;
+		} */
+
+		#format {
+			padding-top: 7%;
+			text-align: center;
+		}
+	</style>
 	<script type="text/javascript" src="{{ url_for('static',filename='userValidation.js')}}"></script>	
-	<h1>{{quiz_name}} - {{current_question + 1}}</h1>
-		<!-- <iframe width="420" height="315" src ={{question_list[current_question][2]}}></iframe> --!>
+		<!-- <iframe width="420" height="315" src ={{question_list[current_question][2]}}></iframe> -->
 		<div id = "hider">
 			<iframe id="player"
 				width="640" height="360"
@@ -11,20 +52,33 @@
 			></iframe>
 		
 		</div>
-		<button onclick = "myFunction({{question_list[current_question][8]}},{{question_list[current_question][3]}})">Play Song Clip</button>
-		<form name = "quiz_question_form" onsubmit="return validateQuizQuestionForm()" method = "post">
-		{{ form.hidden_tag() }}
-		<p>{{ form.answer.label }} {{ form.answer }}</p>
-		<p id = "answer_validate_message"></p>
-		{% for error in form.answer.errors %}
-			<span style="color: red;">[{{ error }}]</span>
-		{% endfor %}
-		{% if current_question != 0%}
-			<a href="{{ url_for('start_quiz',quiz_id = quiz_id,current_question = current_question -1)}}">Previous Question</a>
-		{% endif %}
-		<p>{{ form.submit_answer() }}</p>
-		</form>
-	
+		<div class="col-md-4 col-sm-4 col-xs-12">
+
+		</div>
+		<div class="col-md-4 col-sm-4 col-xs-12" id="format">
+			<h1>{{quiz_name}} - {{current_question + 1}}</h1>
+			<br><br>
+			<div>Click to Play Audio</div>
+			<button onclick = "myFunction({{question_list[current_question][8]}},{{question_list[current_question][3]}})"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSxiaVVwb7cKOU1gVVtCN_lX-8UIUC-EMvTvMzjEpu-mO_StnZb&usqp=CAU" width="20%" height="20%"></button>
+			<form name = "quiz_question_form" onsubmit="return validateQuizQuestionForm()" method = "post">
+			{{ form.hidden_tag() }}
+			<br>
+			<p>{{ form.answer.label }}: <br> {{ form.answer }}</p>
+			<p id = "answer_validate_message"></p>
+			{% for error in form.answer.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+			<br><br><br><br>
+			{% if current_question != 0%}
+				<a href="{{ url_for('start_quiz',quiz_id = quiz_id,current_question = current_question -1)}}"><input type="button" value="Previous Question" id="previous"></a>
+			{% endif %}
+			<div id="next">{{ form.submit_answer() }}</div>
+			</form>	
+		</div>
+		<div class="col-md-4 col-sm-4 col-xs-12">
+
+		</div>
+
 	<script>
 		var tag = document.createElement('script');
 
