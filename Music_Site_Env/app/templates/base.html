@@ -8,18 +8,26 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Lato&family=Raleway:wght@400;500&family=Roboto&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 	<style>
 		body {
-			min-width: 1600px;
+			min-width: 1400px;
 			max-width: 100%;
-			min-height: 800px;
 			/* background-image: linear-gradient(rgba(44, 41, 41,0.6),rgba(112, 111, 110,0.6)), url('https://www.ppt-backgrounds.net/uploads/music-notes-graphic-slides.jpg'); */
 			background-color: #000000;
 			color: white;
-			font-family: "Raleway", sans-serif;
+			font-family: arial;
 		}
 
 		h1 {
+			font-family: "Raleway", sans-serif;
+		}
+
+		h2 {
 			font-family: "Raleway", sans-serif;
 		}
 
@@ -89,12 +97,6 @@
 			width: 100.9%;
 		}
 
-		#warning {
-			font-size: 16px;
-			color: red;
-			padding-left: 15%;
-		}
-
 		#title {
 			padding-top: 1%;
 			padding-bottom: 1%;
@@ -133,9 +135,11 @@
 		}
 
 		.loginContainer {
-			padding-left: 0%;
-			padding-right: 50%;
-			padding-top: 5%;
+			margin-left: 0%;
+			margin-right: 50%;
+			margin-top: 20%;
+			background-color: #1b2022;
+
 		}
 
 		.vertical-center {
@@ -156,15 +160,77 @@
 			border: 0px solid;
 			padding: 15%;
 			margin-top: 5vh;
-			-webkit-box-shadow: -1px 4px 26px 17px rgba(27, 32, 35, 0.96);
-			-moz-box-shadow: -1px 4px 26px 17px rgba(27, 32, 35, 0.96);
-			box-shadow: -1px 4px 26px 17px rgba(27, 32, 35, 0.96);
-		}
-		.alignTop{
-			margin-top:60px;
+			-webkit-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
+			-moz-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
+			box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
 		}
 
+		.alignTop {
+			margin-top: 60px;
+
+		}
+
+		.box:hover {
+			transform: scale(1.0);
+		}
+
+		.box {
+			height: 200px;
+			border-radius: 15px 15px 0px 0px;
+			border: 1px solid;
+
+		}
+
+		.cardalign {
+			margin-top: 10%;
+			margin-bottom: 5%;
+			border: 1px solid;
+		}
+
+		.cardheading {
+			display: flex;
+			justify-content: center;
+			text-align: center;
+		}
+
+		.rowcard {
+			border: 0px solid;
+			margin-bottom: 5%;
+
+		}
+
+		.card {
+			border-radius: 15px;
+			background-color: #1b2022;
+		}
+
+		.Headerpad {
+			border: 0px solid;
+			text-align: center;
+			padding-bottom: 1%;
+			margin-top: 2%;
+			margin-bottom: 1%;
+			background-color: #1b2022;
+			border-radius: 15px;
+		}
+
+		.card:hover {
+			-webkit-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
+			-moz-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
+			box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
+		}
 	</style>
+
+	<script>
+		document.addEventListener('click', function() {
+			if (!event.target.matches("#night")) return;
+			event.preventDefault();
+			document.body.style.backgroundColor = "black";
+			document.body.style.color = "silver";
+			document.getElementById("header").style.borderBottom = "3px solid silver";
+			document.getElementById("footer").style.borderTop = "3px solid silver";
+		})
+	</script>
 </head>
 
 <body>
@@ -194,11 +260,11 @@
 	</div>
 	{% with messages = get_flashed_messages() %}
 	{% if messages %}
-	<div id="warning">
+	<ul>
 		{% for message in messages %}
-		<p>{{ message }}</p>
+		<li>{{ message }}</li>
 		{% endfor %}
-	</div>
+	</ul>
 	{% endif%}
 	{% endwith %}
 	{% block content %}{%endblock%}
