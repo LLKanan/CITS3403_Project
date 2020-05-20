@@ -1,26 +1,60 @@
+<!DOCTYPE html>
 {% extends "base.html" %}
 
 {% block content %}
-	<h1>List of Quizzes</h1>
-	<table style="width:100%">
-		<tr>
-			<th>Quiz_ID</th>
-			<th>Quiz_Name</th>
-			<th>Quiz_Image</th>
-		</tr>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4 Headerpad">
+			<h2>List of Quizzes</h2>
+		</div>
+		<div class="col-md-4">
+		</div>
+	</div>
+<div class="container">
+	<div class="row rowcard">
 		{% for result in results %}
-			<tr> 
-				<th>{{result[0]}}</th>
-				<th>{{result[1]}}</th>
-				<th><img src={{result[2]}} alt="Image for quiz"></th>
-				{% if result[3] == 0 %}
-					<th><a href="{{ url_for('hide_quiz',quiz_id = result[0])}}">Hide Quiz</a></th>
-				{% endif %}
-				{% if result[3] == 1 %}
-					<th><a href="{{ url_for('hide_quiz',quiz_id = result[0])}}">Show Quiz<a></th>
-				{% endif %}
-				<th><a href="{{ url_for('remove_quiz',quiz_id = result[0])}}">Remove Quiz</a></th>
-			</tr>
+		<div class="col-md-4 hoveractive">
+			<!-- Bootstrap Card -->
+			<div class="card cardalign" style="width:300px">
+				<img src={{result[2]}} alt="Card One" class="box card-img-top">
+				<div class="card-body">
+					<h6 class="card-subtitle mb-2 text-muted">{{result[0]}}</h6>
+					<h5 class="card-title cardheading">{{result[1]}}</h5>
+					{% if result[3] == 0 %}
+					<a data-toggle="tooltip" data-placement="bottom" title="Hide Quiz" href="{{ url_for('hide_quiz',quiz_id = result[0])}}" style="padding-left: 20%; font-size: 17px;" class="card-link "><i class="fas fa-eye-slash"></i></a>
+					{% endif %}
+					{% if result[3] == 1 %}
+					<a data-toggle="tooltip" data-placement="bottom" title="Show Quiz" href="{{ url_for('hide_quiz',quiz_id = result[0])}}" style="padding-left: 20%; font-size: 17px;" class="card-link"><i class="fas fa-eye"></i><a>
+							{% endif %}
+							<a data-toggle="tooltip" data-placement="bottom" title="Delete Quiz" href="{{ url_for('remove_quiz',quiz_id = result[0])}}" style="padding-left: 40%; font-size: 17px" class="card-link"><i class="fas fa-trash"></i></a>
+				</div>
+			</div>
+		</div>
 		{% endfor %}
-	</table>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function() {
+
+		$('.hoveractive').hover(
+			// trigger when mouse hover
+			function() {
+				$(this).animate({
+					marginTop: "-=1%",
+				}, 200);
+			},
+
+			// trigger when mouse out
+			function() {
+				$(this).animate({
+					marginTop: "0%"
+				}, 200);
+			}
+		);
+	});
+</script>
+
 {% endblock %}
