@@ -8,26 +8,18 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Lato&family=Raleway:wght@400;500&family=Roboto&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
-	<script src="https://unpkg.com/@popperjs/core@2"></script>
-	<script src="https://unpkg.com/tippy.js@6"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 	<style>
 		body {
-			min-width: 1400px;
+			min-width: 1600px;
 			max-width: 100%;
+			min-height: 800px;
 			/* background-image: linear-gradient(rgba(44, 41, 41,0.6),rgba(112, 111, 110,0.6)), url('https://www.ppt-backgrounds.net/uploads/music-notes-graphic-slides.jpg'); */
 			background-color: #000000;
 			color: white;
-			font-family: arial;
-		}
-
-		h1 {
 			font-family: "Raleway", sans-serif;
 		}
 
-		h2 {
+		h1 {
 			font-family: "Raleway", sans-serif;
 		}
 
@@ -37,7 +29,7 @@
 			padding-right: 20px;
 			float: left;
 			transition: 0.5s;
-			border-radius: 20px;
+			border-radius: 15px;
 		}
 
 		h3:hover {
@@ -71,19 +63,19 @@
 
 		input {
 			background-color: black;
-			border-radius: 20px;
+			border-radius: 5px;
 			border: 1px solid white;
 		}
 
 		select {
 			background-color: black;
-			border-radius: 20px;
+			border-radius: 5px;
 			border: 1px solid white;
 		}
 
 		button {
 			background-color: black;
-			border-radius: 20px;
+			border-radius: 5px;
 			border: 1px solid white;
 		}
 
@@ -95,6 +87,12 @@
 			/* background-color: rgb(61, 15, 61); */
 			background-color: #1b2022;
 			width: 100.9%;
+		}
+
+		#warning {
+			font-size: 16px;
+			color: red;
+			padding-left: 15%;
 		}
 
 		#title {
@@ -135,11 +133,9 @@
 		}
 
 		.loginContainer {
-			margin-left: 0%;
-			margin-right: 50%;
-			margin-top: 20%;
-			background-color: #1b2022;
-
+			padding-left: 0%;
+			padding-right: 50%;
+			padding-top: 5%;
 		}
 
 		.vertical-center {
@@ -160,14 +156,12 @@
 			border: 0px solid;
 			padding: 15%;
 			margin-top: 5vh;
-			-webkit-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
-			-moz-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
-			box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
+			-webkit-box-shadow: -1px 4px 26px 17px rgba(27, 32, 35, 0.96);
+			-moz-box-shadow: -1px 4px 26px 17px rgba(27, 32, 35, 0.96);
+			box-shadow: -1px 4px 26px 17px rgba(27, 32, 35, 0.96);
 		}
-
-		.alignTop {
-			margin-top: 60px;
-
+		.alignTop{
+			margin-top:60px;
 		}
 
 		.box:hover {
@@ -219,18 +213,8 @@
 			-moz-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
 			box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
 		}
-	</style>
 
-	<script>
-		document.addEventListener('click', function() {
-			if (!event.target.matches("#night")) return;
-			event.preventDefault();
-			document.body.style.backgroundColor = "black";
-			document.body.style.color = "silver";
-			document.getElementById("header").style.borderBottom = "3px solid silver";
-			document.getElementById("footer").style.borderTop = "3px solid silver";
-		})
-	</script>
+	</style>
 </head>
 
 <body>
@@ -260,11 +244,11 @@
 	</div>
 	{% with messages = get_flashed_messages() %}
 	{% if messages %}
-	<ul>
+	<div id="warning">
 		{% for message in messages %}
-		<li>{{ message }}</li>
+		<p>{{ message }}</p>
 		{% endfor %}
-	</ul>
+	</div>
 	{% endif%}
 	{% endwith %}
 	{% block content %}{%endblock%}
