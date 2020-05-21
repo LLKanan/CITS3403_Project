@@ -1,79 +1,18 @@
+<!-- 
+	Jinja2 expressions by Benjaming Nguyen.
+	HTML and CSS by Zak Kazakoff.
+-->
+
 {% extends "base.html" %}
 
 {% block content %}
-	<style>
-		.content0 {
-			text-align: center;
-			padding-top: 3%;
-		}
-		.content1 {
-			text-align: center;
-			padding-top: 11%;
-		}
-
-		.correct {
-			color: #ffcd1f;
-		}
-
-		button:hover {
-			transform: scale(1.05);
-			background-color: #ffcd1f;
-			color: black;
-			transition: 0.5s;
-		}
-
-		button {
-			transition: 0.5s;
-		}
-
-		#add_question:hover {
-			transform: scale(1.05);
-			background-color: #ffcd1f;
-			color: black;
-			transition: 0.5s;
-		}
-
-		#add_question {
-			transition: 0.5s;
-		}
-
-		#title {
-			padding-left: 20px;
-		}
-
-		#finalise {
-			margin-top: 95px;
-			background-color: black;
-			border-radius: 20px;
-			border: 1px solid white;
-			width: 125px;
-			height: auto;
-			color: white;
-			text-decoration: none;
-			transition: 0.5s;
-		}
-
-		#finalise a, a:visited, a:hover,
-		a:active,
-		a:focus {
-			color: white;
-			transition: 0.5s;
-			text-decoration: none;
-		}
-
-		#finalise:hover {
-			transition: 0.5s;
-			color: black;
-			background-color: #ffcd1f;
-			transform: scale(1.05);
-		}
-
-	</style>
+	<link rel="stylesheet" href="{{ url_for('static', filename='createquestion.css')}}">
 	<script type="text/javascript" src="{{ url_for('static',filename='userValidation.js')}}"></script>
 	<h1 id="title">Create Question</h1>
 	<form name = "question_form" onsubmit="return validateQuestionForm()" method = "post">
 		<div class="col-md-6 col-sm-6 col-xs-12 content0"> 
 			{{ form.hidden_tag() }}
+			<!-- Each div is for each textbox entry to set question, video playime, and possible answers. -->
 			<div>
 				{{ form.youtube_link.label }}<br>
 				{{ form.youtube_link(size=90) }}
@@ -106,6 +45,7 @@
 				{% endfor %}
 			</div>
 		</div>
+		<!-- Set options menu. -->
 		<div class="col-md-6 col-sm-6 col-xs-12 content1"> 
 			<div class="correct">
 				{{ form.correct_answer.label }}<br>

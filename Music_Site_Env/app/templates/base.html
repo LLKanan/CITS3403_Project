@@ -1,288 +1,45 @@
+<!-- 
+	Jinja2 expressions by Benjaming Nguyen.
+	HTML and CSS by Zak Kazakoff.
+	Creates header and footer elements that are extended to all other pages.
+	Header holds dynamic navigation elements that change based on the log-in status of users.
+ -->
+
 <html>
 
 <head>
 	<title>Base Page</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<!-- <link rel="stylesheet" href="{{ url_for('static', filename='base.css')}}"> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<link href="https://fonts.googleapis.com/css2?family=Lato&family=Raleway:wght@400;500&family=Roboto&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 	<script src="https://unpkg.com/@popperjs/core@2"></script>
 	<script src="https://unpkg.com/tippy.js@6"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+	<link rel="stylesheet" href="{{ url_for('static', filename='base.css')}}">
 	<style>
 		body {
-			min-width: 1600px;
-			max-width: 100%;
-			min-height: 900px;
-			/* background-image: linear-gradient(rgba(44, 41, 41,0.6),rgba(112, 111, 110,0.6)), url('https://www.ppt-backgrounds.net/uploads/music-notes-graphic-slides.jpg'); */
-			background-color: #000000;
-			color: white;
 			font-family: "Raleway", sans-serif;
 		}
-
-		h1 {
-			font-family: "Raleway", sans-serif;
-		}
-
-		h2 {
-			font-family: "Raleway", sans-serif;
-		}
-
-		h3 {
-			width: auto;
-			padding-left: 20px;
-			padding-right: 20px;
-			float: left;
-			transition: 0.5s;
-			border-radius: 15px;
-		}
-
-		h3:hover {
-			transition: 0.5s;
-			background-color: #ffcd1f;
-		}
-
-		h3 a {
-			color: white;
-			transition: 0.5s;
-			text-decoration: none;
-		}
-
-		h3 a:visited {
-			color: white;
-			transition: 0.5s;
-			text-decoration: none;
-		}
-
-		h3 a:hover,
-		a:active,
-		a:focus {
-			color: white;
-			transition: 0.5s;
-			text-decoration: none;
-		}
-
-		.white {
-			color: white;
-		}
-
-		input {
-			background-color: black;
-			border-radius: 20px;
-			border: 1px solid white;
-		}
-
-		select {
-			background-color: black;
-			border-radius: 20px;
-			border: 1px solid white;
-		}
-
-		button {
-			background-color: black;
-			border-radius: 20px;
-			border: 1px solid white;
-		}
-
-
-		#header {
-			/* border-bottom: 3px solid black; */
-			/* min-height: 115px; */
-			text-align: left;
-			/* background-color: rgb(61, 15, 61); */
-			background-color: #1b2022;
-			width: 100.9%;
-		}
-
-		#warning {
-			font-size: 16px;
-			color: red;
-			padding-left: 15%;
-		}
-
-		#title {
-			padding-top: 1%;
-			padding-bottom: 1%;
-		}
-
-		#login {
-			/* border: 2px solid white;
-				border-radius: 10px;
-				background-color: black; */
-			/* width: auto;
-                padding-left: 20px;
-				padding-right: 20px;
-				float: left; */
-		}
-
-		#project {
-			font-size: 36px;
-			padding-top: 1%;
-		}
-
-		#nav {
-			text-align: center;
-			padding-top: 1%;
-			padding-bottom: 1%;
-		}
-
-		#footer {
-			position: fixed;
-			left: 0;
-			bottom: 0;
-			width: 100%;
-			text-align: left;
-			border-top: 3px solid white;
-			padding-left: 20px;
-			background-color: #1b2022;
-		}
-
-		.loginContainer {
-			margin-left: 0%;
-			margin-right: 50%;
-			margin-top: 20%;
-			background-color: #1b2022;
-
-		}
-
-		.vertical-center {
-			padding-top: 3%;
-			align-items: center;
-		}
-
-		.textContainer {
-			padding-left: 15%;
-		}
-
-		.welcomeMessage {
-			font-family: "Roboto"sans-serif;
-			font-size: 16px;
-		}
-
-		.form-container {
-			border: 0px solid;
-			padding: 15%;
-			margin-top: 5vh;
-			-webkit-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
-			-moz-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
-			box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
-		}
-
-		.alignTop {
-			margin-top: 60px;
-
-		}
-
-		.box:hover {
-			transform: scale(1.0);
-		}
-
-		.box {
-			height: 200px;
-			border-radius: 15px 15px 0px 0px;
-			border: 1px solid;
-
-		}
-
-		.cardalign {
-			margin-top: 10%;
-			margin-bottom: 5%;
-			border: 1px solid;
-		}
-
-		.cardheading {
-			display: flex;
-			justify-content: center;
-			text-align: center;
-		}
-
-		.rowcard {
-			border: 0px solid;
-			margin-bottom: 5%;
-
-		}
-
-		.card {
-			border-radius: 15px;
-			background-color: #1b2022;
-		}
-
-		.Headerpad {
-			border: 0px solid;
-			text-align: center;
-			padding-bottom: 1%;
-			margin-top: 2%;
-			margin-bottom: 1%;
-			background-color: #1b2022;
-			border-radius: 15px;
-		}
-
-		.card:hover {
-			-webkit-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
-			-moz-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
-			box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
-		}
-
-			.overlay {
-				position: absolute;
-				top: 0;
-				bottom: 0;
-				left: 0;
-				right: 0;
-				height: 100%;
-				width: 100%;
-				opacity: 0;
-				transition: .5s ease;
-				background-color: lightblue;
-			}
-			#contain{
-				position: relative;
-				width: 100%;
-				height: 10%;
-			}
-			#contain:hover .overlay {
-				opacity: 1;
-			}
-			.text {
-				color: black;
-				font-size: 20px;
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				-webkit-transform: translate(-50%, -50%);
-				-ms-transform: translate(-50%, -50%);
-				transform: translate(-50%, -50%);
-				text-align: center;
-			}
-	</style>
-
-	<script>
-		document.addEventListener('click', function() {
-			if (!event.target.matches("#night")) return;
-			event.preventDefault();
-			document.body.style.backgroundColor = "black";
-			document.body.style.color = "silver";
-			document.getElementById("header").style.borderBottom = "3px solid silver";
-			document.getElementById("footer").style.borderTop = "3px solid silver";
-		})
-	</script>
+	</style> 
 </head>
 
 <body>
+	<!-- Header element present across all pages. -->
 	<div id="header" class="row container-fluid">
+		<!-- Bootstrap columns ensure separation of the title and navigation links. -->
 		<div id="title" class="col-sm-3">
 			<div id="project"><b>CITS3403 Music Quiz</b></div>
 		</div>
 		<div id="nav" class="col-sm-9">
+			<!-- User validation of log-in type displays different available pages as nav links. -->
 			{% if current_user.get_id() != 0 %}
 			<h3><a href="{{ url_for('index') }}">Home</a></h3>
 			<h3><a href="{{ url_for('view_quizzes') }}">Available Quizzes</a></h3>
 			<h3><a href="{{ url_for('my_results') }}">My Results</a></h3>
 			{% endif %}
+			<!-- Admin navigation links -->
 			{% if current_user.get_id() == 0 %}
 			<h3><a href="{{ url_for('admin_home') }}">Admin Home</a></h3>
 			<h3><a href="{{ url_for('manage_users') }}">Manage Users</a></h3>
@@ -299,14 +56,17 @@
 	</div>
 	{% with messages = get_flashed_messages() %}
 	{% if messages %}
-	<ul>
+	<!-- Warning message if the user tries to access a page but is not logged in. -->
+	<div id="warning">
 		{% for message in messages %}
-		<li>{{ message }}</li>
+		<p>{{ message }}</p>
 		{% endfor %}
-	</ul>
+	</div>
 	{% endif%}
 	{% endwith %}
+	<!-- Base.html is extended into all other pages with their page data loaded into the block content below. -->
 	{% block content %}{%endblock%}
+	<!-- Footer element on all pages. -->
 	<div id="footer">
 		<h6>Authored by <a href="LinkedIn.com">Benjamin Nguyen</a>, <a href="LinkedIn.com">Zak Kazakoff</a>, <a href="LinkedIn.com">Femi Arowosafe</a>, <a href="LinkedIn.com">Paula Gatei</a></h6>
 	</div>

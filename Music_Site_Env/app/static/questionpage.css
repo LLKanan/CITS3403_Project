@@ -1,0 +1,37 @@
+button:hover {
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+button {
+    transition: 0.5s;
+}
+
+
+input:hover {
+    transform: scale(1.05);
+    transition: 0.5s;
+    background-color: #ffcd1f;
+    color: black;
+}
+
+input {
+    transition: 0.5s;
+}
+
+#previous {
+    float: left;
+    text-decoration: none;
+    color: white;
+    transition: 0.5s;
+}
+
+#next {
+    float: right;
+    transition: 0.5s;
+}
+
+#format {
+    padding-top: 7%;
+    text-align: center;
+}
