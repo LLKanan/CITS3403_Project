@@ -1,69 +1,146 @@
 {% extends "base.html" %}
 
 {% block content %}
+	<style>
+		.content0 {
+			text-align: center;
+			padding-top: 3%;
+		}
+		.content1 {
+			text-align: center;
+			padding-top: 11%;
+		}
+
+		.correct {
+			color: #ffcd1f;
+		}
+
+		button:hover {
+			transform: scale(1.05);
+			background-color: #ffcd1f;
+			color: black;
+			transition: 0.5s;
+		}
+
+		button {
+			transition: 0.5s;
+		}
+
+		#add_question:hover {
+			transform: scale(1.05);
+			background-color: #ffcd1f;
+			color: black;
+			transition: 0.5s;
+		}
+
+		#add_question {
+			transition: 0.5s;
+		}
+
+		#title {
+			padding-left: 20px;
+		}
+
+		#finalise {
+			margin-top: 95px;
+			background-color: black;
+			border-radius: 20px;
+			border: 1px solid white;
+			width: 125px;
+			height: auto;
+			color: white;
+			text-decoration: none;
+			transition: 0.5s;
+		}
+
+		#finalise a, a:visited, a:hover,
+		a:active,
+		a:focus {
+			color: white;
+			transition: 0.5s;
+			text-decoration: none;
+		}
+
+		#finalise:hover {
+			transition: 0.5s;
+			color: black;
+			background-color: #ffcd1f;
+			transform: scale(1.05);
+		}
+
+	</style>
 	<script type="text/javascript" src="{{ url_for('static',filename='userValidation.js')}}"></script>
-	<h1>Create Question</h1>
+	<h1 id="title">Create Question</h1>
 	<form name = "question_form" onsubmit="return validateQuestionForm()" method = "post">
-		{{ form.hidden_tag() }}
-		<div>
-			{{ form.youtube_link.label }}<br>
-			{{ form.youtube_link(size=128) }}
-			<button type = "button" onclick = "checkVidID()">Check Video ID</button>
-			<br>
-			<p id = "youtube_link_validate_message"></p>
-			{% for error in form.youtube_link.errors %}
-			<span style="color: red;">[{{ error }}]</span>
-			{% endfor %}
-		</div>
-		<iframe id="player"
+		<div class="col-md-6 col-sm-6 col-xs-12 content0"> 
+			{{ form.hidden_tag() }}
+			<div>
+				{{ form.youtube_link.label }}<br>
+				{{ form.youtube_link(size=90) }}
+				<button type = "button" onclick = "checkVidID()">Check Video ID</button>
+				<br>
+				<p id = "youtube_link_validate_message"></p>
+				{% for error in form.youtube_link.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</div>
+			<iframe id="player"
 				width="640" height="360"
 				src=""
 			></iframe>
-		<div>
-			{{ form.start_time.label }}<br>
-			{{ form.start_time(size=128) }}<br>
-			<p id = "start_time_validate_message"></p>
-			{% for error in form.start_time.errors %}
-			<span style="color: red;">[{{ error }}]</span>
-			{% endfor %}
+			<br><br>
+			<div>
+				{{ form.start_time.label }}<br>
+				{{ form.start_time(size=90) }}<br>
+				<p id = "start_time_validate_message"></p>
+				{% for error in form.start_time.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</div>
+			<div>
+				{{ form.duration.label }}<br>
+				{{ form.duration(size=90) }}<br>
+				<p id = "duration_validate_message"></p>
+				{% for error in form.duration.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</div>
 		</div>
-		<div>
-			{{ form.duration.label }}<br>
-			{{ form.duration(size=128) }}<br>
-			<p id = "duration_validate_message"></p>
-			{% for error in form.duration.errors %}
-			<span style="color: red;">[{{ error }}]</span>
-			{% endfor %}
+		<div class="col-md-6 col-sm-6 col-xs-12 content1"> 
+			<div class="correct">
+				{{ form.correct_answer.label }}<br>
+				{{ form.correct_answer(size=90) }}<br>
+				{% for error in form.correct_answer.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</div>
+			<br>
+			<div>
+				{{ form.option_1.label }}<br>
+				{{ form.option_1(size=90) }}<br>
+				{% for error in form.option_1.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</div>
+			<br>
+			<div>
+				{{ form.option_2.label }}<br>
+				{{ form.option_2(size=90) }}<br>
+				{% for error in form.option_2.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</div>
+			<br>
+			<div>
+				{{ form.option_3.label }}<br>
+				{{ form.option_3(size=90) }}<br>
+				{% for error in form.option_3.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</div>
+			<br>
+			<p>{{ form.add_question() }}</p><br><br><br>
+			<div id="finalise"><a href = "{{ url_for('finalise_quiz',quiz_id = quiz_id) }}">Finalise Quiz</a></div>
 		</div>
-		<div>
-			{{ form.correct_answer.label }}<br>
-			{{ form.correct_answer(size=128) }}<br>
-			{% for error in form.correct_answer.errors %}
-			<span style="color: red;">[{{ error }}]</span>
-			{% endfor %}
-		</div>
-		<div>
-			{{ form.option_1.label }}<br>
-			{{ form.option_1(size=128) }}<br>
-			{% for error in form.option_1.errors %}
-			<span style="color: red;">[{{ error }}]</span>
-			{% endfor %}
-		</div>
-		<div>
-			{{ form.option_2.label }}<br>
-			{{ form.option_2(size=128) }}<br>
-			{% for error in form.option_2.errors %}
-			<span style="color: red;">[{{ error }}]</span>
-			{% endfor %}
-		</div>
-		<div>
-			{{ form.option_3.label }}<br>
-			{{ form.option_3(size=128) }}<br>
-			{% for error in form.option_3.errors %}
-			<span style="color: red;">[{{ error }}]</span>
-			{% endfor %}
-		</div>
-		<p>{{ form.add_question() }}</p>
 	</form>
-	<a href = "{{ url_for('finalise_quiz',quiz_id = quiz_id) }}">Finalise Quiz</a>
 {% endblock %}

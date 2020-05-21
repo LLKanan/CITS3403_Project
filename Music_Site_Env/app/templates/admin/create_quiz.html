@@ -2,8 +2,51 @@
 
 {% block content %}
 	<script type="text/javascript" src="{{ url_for('static',filename='userValidation.js')}}"></script>
-	<h1>Create Quiz</h1>
-	<form name = "quiz_form" onsubmit="return validateQuizForm()" method = "post">
+	<style>
+
+		#submit:hover {
+			transform: scale(1.05);
+			transition: 0.5s;
+			background-color: #ffcd1f;
+			color: black;
+		}
+
+		#submit {
+			transition: 0.5s;
+		}
+
+		#create {
+			margin-top: 8%;
+			margin-left: 25%;
+			width: 50%;
+			border: 0px solid;
+            padding: 25px 1px;
+            -webkit-box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75);
+			box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75);
+			background-color: #1b2022;
+			border-radius: 20px;
+			transition: 0.5s;
+			text-align: center;
+		}
+
+		.createbox {
+			border: 0px solid;
+			padding: 15px 0px 15px 0px;
+			-webkit-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
+			-moz-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
+			box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
+			text-align: center;
+			background-color: #1b2022;
+		}
+
+	</style>
+	<h1 id="create">Create Quiz</h1><br><br><br>
+	<div class="col-md-2 col-sm-2 col-xs-12">
+
+	</div>
+	<div class="col-md-8 col-sm-8 col-xs-12 createbox">
+		<form name = "quiz_form" onsubmit="return validateQuizForm()" method = "post">
 		{{ form.hidden_tag() }}
 		<p>
 			{{ form.name.label }}<br>
@@ -15,12 +58,16 @@
 		</p>
 		<p>
 			{{ form.image.label }}<br>
-			{{ form.image(size=128) }}<br>
+			{{ form.image(size=64) }}<br>
 			<p id = "image_validate_msg"></p>
 			{% for error in form.image.errors %}
 			<span style="color: red;">[{{ error }}]</span>
 			{% endfor %}
-		</p>
+		</p><br>
 		<p>{{ form.submit() }}</p>
-	</form>
+		</form>
+	</div>
+	<div class="col-md-2 col-sm-2 col-xs-12">
+		
+	</div>
 {% endblock %}
