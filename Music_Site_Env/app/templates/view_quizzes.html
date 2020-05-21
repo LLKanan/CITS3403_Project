@@ -1,18 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<h1>List of Quizzes</h1>
-	<table style="width:100%">
-		<tr>
-			<th>Quiz_Name</th>
-			<th>Quiz_Image</th>
-		</tr>
-		{% for result in results %}
-			<tr>
-				<th><a href="{{ url_for('start_quiz',quiz_id = result[0], current_question = 0)}}">{{result[1]}}</a></th>
-				<th><img src={{result[2]}} alt="Image for quiz"></th>
-				<th>
-			</tr>
-		{% endfor %}
-	</table>
+<div class ="container">
+	<h1>List of Quizzes</h1>	
+		<div class = "row">
+			{% for result in results %}
+				<div class = "col-md-4">
+					<div class="card cardalign" style="width:300px"></div>
+						<img class="box card-img-top"  src={{result[2]}}  alt="Image for quiz">
+						<div class = "card-body">
+							<div><a data-toggle="tooltip" data-placement="bottom" href="{{ url_for('start_quiz',quiz_id = result[0], current_question = 0)}}" style="padding-left: 20%; font-size: 17px;" class="card-link "><i class="fas fa-play"></i>{{result[1]}}</a></div>
+					</div>			
+				</div>
+				{% endfor %}
+		</div>
+</div>
+
+<script>
+	$(document).ready(function() {
+
+		$('.col-md-4').hover(
+			// trigger when mouse hover
+			function() {
+				$(this).animate({
+					marginTop: "-=1%",
+				}, 200);
+			},
+
+			// trigger when mouse out
+			function() {
+				$(this).animate({
+					marginTop: "0%"
+				}, 200);
+			}
+		);
+	});
+</script>
 {% endblock %}
+

@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from app import login
 
+#Contains user information
 class User(UserMixin, db.Model):
 	user_id = db.Column(db.Integer, primary_key = True)
 	username = db.Column(db.String(64), index = True, unique = True)
@@ -18,6 +19,7 @@ class User(UserMixin, db.Model):
 	def __repr__(self):
 		return '<User {}>'.format(self.username)
 
+#Contains quiz information
 class Quiz(db.Model):
     quiz_id = db.Column(db.Integer, primary_key = True) 
     quiz_name = db.Column(db.String(128), index = True)
@@ -28,6 +30,7 @@ class Quiz(db.Model):
     def __repr__(self):
         return '<Quiz {}>'.format(self.quiz_name)
 
+#Contains Question Information
 class Question(db.Model):
     question_id = db.Column(db.Integer, primary_key = True, index = True)
     quiz_id = db.Column(db.Integer, db.ForeignKey('quiz.quiz_id'))
@@ -42,6 +45,7 @@ class Question(db.Model):
     def __repr__(self):
         return '<Question {}'.format(self.correct_answer)
 
+#Contains information for each User's Answers to a question
 class Results(db.Model):
     result_id = db.Column(db.Integer, primary_key = True, index= True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
@@ -52,6 +56,7 @@ class Results(db.Model):
     def __repr__(self):
         return '<Results {}'.format(self.correct)
 
+#Contains information for the final results after a user has finalised a quiz
 class finalResults(db.Model):
 	final_result_id = db.Column(db.Integer, primary_key = True, index = True)
 	user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))

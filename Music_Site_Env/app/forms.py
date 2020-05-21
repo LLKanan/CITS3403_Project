@@ -3,12 +3,14 @@ from wtforms import StringField,PasswordField,BooleanField,SubmitField,IntegerFi
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from app.models import User,Quiz,Question,Results,finalResults
 
+#Login form
 class LoginForm(FlaskForm):
     username = StringField('Username', validators = [DataRequired()])
     password = PasswordField('Password', validators = [DataRequired()])
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
 
+#Registration Form
 class RegistrationForm(FlaskForm):
 	username = StringField('Username', validators = [DataRequired()])
 	email = StringField('Email', validators = [DataRequired(), Email()])
@@ -26,6 +28,7 @@ class RegistrationForm(FlaskForm):
 		if user is not None:
 			raise ValidationError('Email address already in use, try a different email address.')
 
+#Quiz Creation Form
 class CreateQuizForm(FlaskForm):
 	name = StringField('Quiz Name', validators = [DataRequired()])
 	image = StringField('Image_URL', validators = [DataRequired()])
@@ -36,6 +39,7 @@ class CreateQuizForm(FlaskForm):
 		if query is not None:
 			raise ValidationError('Sorry this quiz name is already taken. Try a different quiz name.')
 
+#Question Creation form
 class CreateQuestionForm(FlaskForm):
 	youtube_link = StringField('Youtube Video Link', validators = [DataRequired()])
 	start_time = IntegerField('Video Start Time in seconds', validators = [DataRequired()])
@@ -46,6 +50,7 @@ class CreateQuestionForm(FlaskForm):
 	option_3 = StringField('Multiple Choice option 4', validators = [DataRequired()])
 	add_question = SubmitField('Add question')
 
+#User Question Form
 class QuestionForm(FlaskForm):
 	answer = SelectField("Select answer")
 	submit_answer = SubmitField('Next Question')
