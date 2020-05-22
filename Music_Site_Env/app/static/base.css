@@ -181,12 +181,11 @@ button:hover {
 .Headerpad {
     border: 0px solid;
     text-align: center;
-    padding-bottom: 1%;
-    margin-top: 2%;
-    margin-bottom: 1%;
     background-color: #1b2022;
     border-radius: 15px;
-}
+    width: 300px;
+    padding-top: 5px;
+  }
 
 .card:hover {
     -webkit-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
@@ -228,6 +227,9 @@ button:hover {
     transform: translate(-50%, -50%);
     text-align: center;
 }
+
+
+
 
 /* Styling table content */
 .tablecontent {

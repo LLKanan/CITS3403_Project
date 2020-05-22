@@ -1,12 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
-<div id = "contain">
-	<h1>{{quiz_info[1]}}</h1>
-</div>
-	<img  style= "width:300px" src = {{quiz_info[3]}} alt = "Quiz Image">
+<style>
+	.Headerpad {
+      border: 0px solid;
+      text-align: center;
+      background-color: #1b2022;
+	  border-radius: 15px;
+	  width: 300px;
+	  padding-top: 5px;
+    }
+</style>
+<br>
+<div style="padding-left: 40%">
+	<h1 class='Headerpad'>{{quiz_info[1]}}</h1>
+</div><br><br><br>
+	<!-- <img  style= "width:300px" src = {{quiz_info[3]}} alt = "Quiz Image"> -->
 	<div class= "container">
 		<h2 class = "text">Final Mark: {{correct_counter}}/{{total}}</h2>
-		<div class="col-md-8">
+		<div class="col-md-12">
 			<table style="width:100%" class="tablecontent table-hover">
 				<thead>
 					<tr>

@@ -1,6 +1,6 @@
 h2 {
     margin-top: 15%;
-    margin-left: 5%;
+    margin-left: 30%;
     width: 40%;
     border: 0px solid;
     padding: 50px 60px;
@@ -8,7 +8,7 @@ h2 {
     -moz-box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75);
     box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75);
     background-color: #ffcd1f;
-    border-radius: 15px;
+    border-radius: 20px;
     transition: 0.5s;
     color: black;
 }

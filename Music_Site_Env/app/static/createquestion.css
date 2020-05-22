@@ -11,17 +11,6 @@
     color: #ffcd1f;
 }
 
-button:hover {
-    transform: scale(1.05);
-    background-color: #ffcd1f;
-    color: black;
-    transition: 0.5s;
-}
-
-button {
-    transition: 0.5s;
-}
-
 #add_question:hover {
     transform: scale(1.05);
     background-color: #ffcd1f;
