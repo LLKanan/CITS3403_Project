@@ -1,3 +1,77 @@
+<style>
+  body {
+    in-width: 1600px;
+    max-width: 100%;
+    min-height: 900px;
+    /* background-image: linear-gradient(rgba(44, 41, 41,0.6),rgba(112, 111, 110,0.6)), url('https://www.ppt-backgrounds.net/uploads/music-notes-graphic-slides.jpg'); */
+    background-color: #000000;
+    color: white;
+    font-family: "Raleway", sans-serif;
+  }
+
+  h1 {
+    font-family: "Raleway", sans-serif;
+  }
+
+  h2 {
+    font-family: "Raleway", sans-serif;
+  }
+
+  h3 {
+    width: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    float: left;
+    transition: 0.5s;
+    border-radius: 15px;
+  }
+
+  h3:hover {
+    transition: 0.5s;
+    background-color: #ffcd1f;
+  }
+
+  h3 a {
+    color: white;
+    transition: 0.5s;
+    text-decoration: none;
+  }
+
+  h3 a:visited {
+    color: white;
+    transition: 0.5s;
+    text-decoration: none;
+  }
+
+  h3 a:hover,
+  a:active,
+  a:focus {
+    color: white;
+    transition: 0.5s;
+    text-decoration: none;
+  }
+
+  .white {
+    color: white;
+  }
+
+  input {
+    background-color: black;
+    border-radius: 5px;
+    border: 1px solid white;
+  }
+
+  select {
+    background-color: black;
+    border-radius: 5px;
+    border: 1px solid white;
+  }
+
+  button {
+    background-color: black;
+    border-radius: 5px;
+    border: 1px solid white;
+  }
 
     .box:hover {
       transform: scale(1.0);
@@ -48,3 +122,4 @@
       -moz-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
       box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
     }
+  </style>
