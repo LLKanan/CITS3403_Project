@@ -1,12 +1,13 @@
+{% extends "base.html" %}
+
 {% block content %}
-	<div id = "contain">
-		<h1>{{quiz_info[1]}}</h1>
-		<h2>Final Mark: {{correct_counter}}/{{total}}</h2>
+	<div style="padding-left: 40%;">
+		<h1 class="Headerpad">{{quiz_info[1]}}</h1>
+		<h2 class="Headerpad">Final Mark: {{correct_counter}}/{{total}}</h2>
 	</div>
-	<img  style= "width:300px" src = {{quiz_info[3]}} alt = "Quiz Image">
 	<div class= "container">
 		<h2 class = "text">Final Mark: {{correct_counter}}/{{total}}</h2>
-		<div class="col-md-8">
+		<div class="col-md-12">
 			<table style="width:100%" class="tablecontent table-hover">
 				<thead>
 					<tr>
@@ -29,3 +30,4 @@
 			</table>
 		</div>
 	</div>
+{% endblock %}
