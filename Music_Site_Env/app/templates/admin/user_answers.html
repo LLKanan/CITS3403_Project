@@ -8,12 +8,10 @@
 		<div class="col-md-2 tableheader">
 			<h1 style="text-align:center;">{{quiz_info[1]}}</h1>
 		</div>
-		<div class="col-md-5">
-		</div>
+		<div class="col-md-5"></div>
 	</div>
 	<div class="row">
-		<div class="col-md-2">
-		</div>
+		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<table style="width:100%" class="tablecontent table-hover">
 				<thead>
@@ -24,25 +22,25 @@
 						<th>Correct/Incorrect</th>
 					</tr>
 				</thead>
-				{% for result in results %}
-				<tbody class="tablebody ">
-					<tr>
-						<th>{{result[0]}}</th>
-						<th>{{result[2]}}</th>
-						<th>{{result[1]}}</th>
-						<th>{{result[3]}}</th>
-					</tr>
-				</tbody>
-				{% endfor %}
+					{% for result in results %}
+					<tbody class="tablebody ">
+						<tr>
+							<th>{{result[0]}}</th>
+							<th>{{result[2]}}</th>
+							<th>{{result[1]}}</th>
+							<th>{{result[3]}}</th>
+						</tr>
+					</tbody>
+					{% endfor %}
 			</table>
 		</div>
 		<div class="col-md-2">
 			<div class="row">
 				<div class="col-md-12 game-board">
-							<p style="font-size: 1.5em; font-weight: bold;">Final Mark: {{correct_counter}}/{{total}}</p>
+					<p style="font-size: 1.5em; font-weight: bold;">Final Mark: {{correct_counter}}/{{total}}</p>
 				</div>
+			</div>
 		</div>
-	</div>
 </div>
 
 {% endblock %}
