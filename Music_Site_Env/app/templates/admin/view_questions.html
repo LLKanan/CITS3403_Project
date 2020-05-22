@@ -3,26 +3,32 @@
 {% block content %}
 	<h1>{{quiz_info[1]}}</h1>
 	<img src = {{quiz_info[2]}} alt = "Quiz Image">
-	<table style="width:100%">
-		<tr>
-			<th>Youtube Link</th>
-			<th>Start Time</th>
-			<th>Duration</th>
-			<th>Correct Answer</th>
-			<th>Incorrect Answer 1</th>
-			<th>Incorrect Answer 2</th>
-			<th>Incorrect Answer 3</th>
-		</tr>
-		{% for result in results %}
-			<tr>
-				<th><iframe src = "https://www.youtube.com/embed/{{result[2]}}"></iframe></th>
-				<th>{{result[8]}}</th>
-				<th>{{result[3]}}</th>
-				<th>{{result[4]}}</th>
-				<th>{{result[5]}}</th>
-				<th>{{result[6]}}</th>
-				<th>{{result[7]}}</th>
-			</tr>
+	<div class="col-md-8">
+		<table style="width:100%" class="tablecontent table-hover">
+			<thead>
+				<tr>
+					<th>Youtube Link</th>
+					<th>Start Time</th>
+					<th>Duration</th>
+					<th>Correct Answer</th>
+					<th>Incorrect Answer 1</th>
+					<th>Incorrect Answer 2</th>
+					<th>Incorrect Answer 3</th>
+				</tr>
+			</thead>
+			{% for result in results %}
+			<tbody class="tablebody ">
+				<tr>
+					<th><iframe src = "https://www.youtube.com/embed/{{result[2]}}"></iframe></th>
+					<th>{{result[8]}}</th>
+					<th>{{result[3]}}</th>
+					<th>{{result[4]}}</th>
+					<th>{{result[5]}}</th>
+					<th>{{result[6]}}</th>
+					<th>{{result[7]}}</th>
+				</tr>
+			</tbody>
 		{% endfor %}
 	</table>
+</div>
 {% endblock %}
