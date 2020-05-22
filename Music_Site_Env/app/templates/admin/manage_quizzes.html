@@ -2,6 +2,8 @@
 {% extends "base.html" %}
 
 {% block content %}
+<script type="text/javascript" src="{{ url_for('static',filename='misc.js')}}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='manage_quizzes.css')}}">
 <div class="container">
 	<div class="row">
 		<div class="col-md-4">
@@ -35,26 +37,5 @@
 		{% endfor %}
 	</div>
 </div>
-
-<script>
-	$(document).ready(function() {
-
-		$('.hoveractive').hover(
-			// trigger when mouse hover
-			function() {
-				$(this).animate({
-					marginTop: "-=1%",
-				}, 200);
-			},
-
-			// trigger when mouse out
-			function() {
-				$(this).animate({
-					marginTop: "0%"
-				}, 200);
-			}
-		);
-	});
-</script>
 
 {% endblock %}

@@ -1,23 +1,48 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<h1>List of users</h1>
-	<div class="container">
-		<table style="width:100%" class = "table table-hover table-borderless table-info">
-			<tr>
-				<th><button type="button" class ="btn btn-primary">User_ID</button></th>
-				<th><button type="button" class ="btn btn-primary">Username</button></th>
-				<th><button type="button" class ="btn btn-primary">Email</button></th>
-				<th><button type="button" class ="btn btn-primary">Manage</button></th>
-			</tr>
-			{% for result in results %}
-				<tr> 
-					<th>{{result[0]}}</th>
-					<th>{{result[1]}}</th>
-					<th>{{result[2]}}</th>
-					<th><a href="{{ url_for('remove_user',user_id = result[0])}}">Remove</a></th>
-				</tr>
-			{% endfor %}
-		</table>
+<link rel="stylesheet" href="{{ url_for('static', filename='manage_users.css')}}">
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-5">
+		</div>
+		<div class="col-md-2 tableheader">
+			<h1 style="text-align:center;">List of users</h1>
+		</div>
+		<div class="col-md-5">
+		</div>
 	</div>
+	<div class="row">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-8">
+			<table style="width:100%" class="tablecontent table-hover">
+				<thead>
+					<tr>
+						<th>User_ID</th>
+						<th>Username</th>
+						<th>Email</th>
+						<th>Manage</th>
+					</tr>
+				</thead>
+				{% for result in results %}
+				<tbody class="tablebody ">
+					<tr>
+						<th>{{result[0]}}</th>
+						<th>{{result[1]}}</th>
+						<th>{{result[2]}}</th>
+						<th><a data-toggle="tooltip" data-placement="bottom" title="Delete User"
+							href="{{ url_for('remove_user',user_id = result[0])}}"
+							style="font-size: 17px" class="card-link"><i class="fas fa-trash"></i></a></th>
+					</tr>
+				</tbody>
+				{% endfor %}
+			</table>
+		</div>
+		<div class="col-md-2">
+		</div>
+	</div>
+</div>
+
+
 {% endblock %}
