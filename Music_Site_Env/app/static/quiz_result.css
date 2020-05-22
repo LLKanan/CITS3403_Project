@@ -1,0 +1,60 @@
+/* Styling table content */
+.tablecontent {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 15px 15px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(128, 125, 128, 0.15);
+}
+/* Styling table head */
+.tablecontent thead tr {
+  font-size: 1.5em;
+  background-color: #1b2022;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+/* padding table content */
+.tablecontent th,
+.tablecontent td {
+  padding: 12px 15px;
+}
+/* Adding border to table body */
+.tablecontent tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+/* Assigning background and font to table*/
+.tablebody {
+  background-color: #263136;
+  color: white;
+}
+/* Styling last bottom border */
+.tablecontent tbody tr:last-of-type {
+  border-bottom: 2px solid #1b2022;
+}
+/* Increasing table content weight and color*/
+.tablecontent tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+/* Styling table head*/
+.tableheader {
+  background-color: #1b2022;
+  margin-top: 20px;
+  text-align: center;
+  border-radius: 15px 15px 15px 15px;
+  padding-bottom: 10px;
+}
+/* Changing hover color*/
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
+  background-color: #fcba03;
+}
+/* Styling result display*/
+.game-board {
+  display: grid;
+  grid-template-columns: 120px 120px 120px grid-template-rows: 120px 120px 120px 20px;
+  justify-content: center;
+}

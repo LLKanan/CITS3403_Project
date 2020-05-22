@@ -1,0 +1,16 @@
+/* Aligning top*/
+.alignTop {
+  margin-top: 60px;
+}
+/*Styling registration form*/
+.form-container-reg {
+  border: 0px solid;
+  background-color: #1b2022;
+  padding: 15%;
+  margin-left: 10%;
+  margin-top: 20%;
+  border-radius: 15px 15px 15px 15px;
+  -webkit-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
+  -moz-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
+  box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
+}

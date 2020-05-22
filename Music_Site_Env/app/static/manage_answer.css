@@ -1,0 +1,49 @@
+/* Scaling image box hover*/
+  .box:hover {
+    transform: scale(1.0);
+  }
+/* Styling image box*/
+  .box {
+    height: 200px;
+    border-radius: 15px 15px 0px 0px;
+    border: 1px solid;
+
+  }
+/* Aligning image card*/
+  .cardalign {
+    margin-top: 10%;
+    margin-bottom: 5%;
+    border: 1px solid;
+  }
+/* Aligning card heading*/
+  .cardheading {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+/* Styling border*/
+  .rowcard {
+    border: 0px solid;
+    margin-bottom: 5%;
+  }
+/* Changing card background*/
+  .card {
+    border-radius: 15px;
+    background-color: #1b2022;
+  }
+/* Styling headpad*/
+  .Headerpad {
+    border: 0px solid;
+    text-align: center;
+    padding-bottom: 1%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    background-color: #1b2022;
+    border-radius: 15px;
+  }
+/* Asigning shadow to card on hover*/
+  .card:hover {
+    -webkit-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
+    -moz-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
+    box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
+  }

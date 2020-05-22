@@ -1,0 +1,37 @@
+/* Padding text container*/
+.textContainer {
+  padding-left: 15%;
+}
+/* Styling welcome message*/
+.welcomeMessage {
+  font-family: "Roboto"sans-serif;
+  font-size: 16px;
+  padding: 15%;
+  border-radius: 15px 15px 15px 15px;
+  background-color: #1b2022;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+/* Styling login container*/
+.form-container {
+  border: 0px solid;
+  padding: 15%;
+  margin-top: 5vh;
+  border-radius: 15px 15px 15px 15px;
+  -webkit-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
+  -moz-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
+  box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
+}
+/* Aliging vertically*/
+.vertical-center {
+  padding-top: 3%;
+  align-items: center;
+}
+/* styling login container*/
+.loginContainer {
+  margin-left: 0%;
+  margin-right: 50%;
+  margin-top: 20%;
+  background-color: #1b2022;
+  border-radius: 15px 15px 15px 15px;
+}
