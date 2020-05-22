@@ -3,24 +3,29 @@
 {% block content %}
 	<div class =" container">
 		<h1>{{title}}</h1>
-			<table style="width:100%" class= "table table-bordeless table-hover table-dark">
-				<tr>
-					<th>Quiz ID</th>
-					<th>Quiz Name</th>
-					<th>Quiz image</th>
-					<th>Final Mark</th>
-					<th>View Answers</th>
-				</tr>
-				{% for result in results %}
-					<tr> 
-						<th><option value ="{{result[0]}}">{{result[0]}}</option></th>
-						<th><option value ="{{result[1]}}">{{result[1]}}</option></th>
-						<th><img style = "width: 300px" src = "{{result[2]}}" alt = "Image for quiz"></th>
-						<th><option value ="{{result[3]}}">{{result[3]}}</option></th>
-						<th><a href="{{ url_for('view_answers',quiz_id = result[0],user_id = current_user.get_id()) }}">View Answers</a></th>
-					</tr>
-				{% endfor %}
-				</div>
-			</table>
+			<div class="col-md-12">
+				<table style="width:100%" class= "table table-bordeless table-hover table-dark">
+					<thead>
+						<tr>
+							<th>Quiz ID</th>
+							<th>Quiz Name</th>
+							<th>Quiz image</th>
+							<th>Final Mark</th>
+							<th>View Answers</th>
+						</tr>
+					</thead>
+						{% for result in results %}
+						<tbody class="tablebody ">
+							<tr> 
+								<th><option value ="{{result[0]}}">{{result[0]}}</option></th>
+								<th><option value ="{{result[1]}}">{{result[1]}}</option></th>
+								<th><img style = "width: 300px" src = "{{result[2]}}" alt = "Image for quiz"></th>
+								<th><option value ="{{result[3]}}">{{result[3]}}</option></th>
+								<th><a href="{{ url_for('view_answers',quiz_id = result[0],user_id = current_user.get_id()) }}">View Answers</a></th>
+							</tr>
+						</tbody>
+					{% endfor %}
+				</table>
+			</div>
 	</div>
 {% endblock %}
