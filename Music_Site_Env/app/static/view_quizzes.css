@@ -1,0 +1,38 @@
+ .cardalign {
+    margin-top: 10%;
+    margin-bottom: 5%;
+    border: 1px solid;
+  }
+
+  .cardheading {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .rowcard {
+    border: 0px solid;
+    margin-bottom: 5%;
+
+  }
+
+  .card {
+    border-radius: 15px;
+    background-color: #1b2022;
+  }
+
+  .Headerpad {
+    border: 0px solid;
+    text-align: center;
+    padding-bottom: 1%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    background-color: #1b2022;
+    border-radius: 15px;
+  }
+
+  .card:hover {
+    -webkit-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
+    -moz-box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
+    box-shadow: -1px 4px 26px 1px rgba(128, 125, 128, 1);
+  }
