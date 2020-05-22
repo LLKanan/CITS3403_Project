@@ -2,7 +2,7 @@
 
 {% block content %}
 <script type="text/javascript" src="{{ url_for('static',filename='userValidation.js')}}"></script>
-
+<link rel="stylesheet" href="{{ url_for('static', filename='Regisration.css')}}">
 <div class="container-fluid">
 	<div class="alignTop">
 		<div class="row">
@@ -10,7 +10,7 @@
 			</div>
 			<div class="col-md-4 col-sm-4 col-xs-12">
 
-				<form class="form-container" name="registration_form" onsubmit="return validateRegistrationForm()" method="post">
+				<form class="form-container-reg" name="registration_form" onsubmit="return validateRegistrationForm()" method="post">
 					{{ form.hidden_tag() }}
 					<h1>Regisration Form</h1>
 					<div>
