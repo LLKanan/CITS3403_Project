@@ -26,7 +26,9 @@
 			<h1>{{quiz_name}} - {{current_question + 1}}</h1>
 			<br><br>
 			<div>Click to Play Audio</div>
-			<button onclick = "myFunction({{question_list[current_question][8]}},{{question_list[current_question][3]}})"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSxiaVVwb7cKOU1gVVtCN_lX-8UIUC-EMvTvMzjEpu-mO_StnZb&usqp=CAU" width="20%" height="20%"></button>
+			<button onclick = "myFunction({{question_list[current_question][8]}},{{question_list[current_question][3]}})"><img src="https://i.imgur.com/u56cjdT.png" width="20%" height="20%"></button>
+			//Credits: Andy Tran(22252578)
+			//John Vo(19169453)
 			<form name = "quiz_question_form" onsubmit="return validateQuizQuestionForm()" method = "post">
 			{{ form.hidden_tag() }}
 			<br>
@@ -46,7 +48,6 @@
 		<div class="col-md-4 col-sm-4 col-xs-12">
 
 		</div>
-
 	<script>
 		var tag = document.createElement('script');
 
