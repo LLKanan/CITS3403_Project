@@ -3,22 +3,27 @@
 {% block content %}
 	<h1>{{title}}</h1>
 	<div class="container">
-		<table style="width:100%" class = "table table-hover table-borderless table-info">
-		<tr>
-			<th>User_ID</th>
-			<th>Username</th>
-			<th>Final Mark</th>
-			<th>View Answers</th>
-		</tr>
-		{% for result in results %}
-			<tr> 
-				<th>{{result[0]}}</th>
-				<th>{{result[1]}}</th>
-				<th>{{result[2]}}</th>
-				<th><a href="{{ url_for('view_answers',quiz_id = quiz_id,user_id = result[0])}}">View Answers</a></th>
-			</tr>
-		{% endfor %}
-		</table>
+		<div class="col-md-8">
+			<table style="width:100%" class="tablecontent table-hover">
+				<thead>
+					<tr>
+						<th>User_ID</th>
+						<th>Username</th>
+						<th>Final Mark</th>
+						<th>View Answers</th>
+					</tr>
+				</thead>
+				{% for result in results %}
+				<tbody class="tablebody ">
+					<tr> 
+						<th>{{result[0]}}</th>
+						<th>{{result[1]}}</th>
+						<th>{{result[2]}}</th>
+						<th><a href="{{ url_for('view_answers',quiz_id = quiz_id,user_id = result[0])}}">View Answers</a></th>
+					</tr>
+				</tbody>
+				{% endfor %}
+			</table>
+		</div>
 	</div>
-
 {% endblock %}
