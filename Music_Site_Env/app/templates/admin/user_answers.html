@@ -6,20 +6,26 @@
 	<img  style= "width:300px" src = {{quiz_info[3]}} alt = "Quiz Image">
 	<div class= "container">
 		<h2 class = "text">Final Mark: {{correct_counter}}/{{total}}</h2>
-		<table style="width:100%" class= "table table-borderless table-hover table-info">
-			<tr>
-				<th>Number</th>
-				<th>Your Answer</th>
-				<th>Correct Answer</th>
-			</tr>
-			{% for result in results %}
-				<tr> 
-					<th>{{result[0]}}</th>
-					<th>{{result[2]}}</th>
-					<th>{{result[1]}}</th>
-					<th>{{result[3]}}</th>
-				</tr>
-			{% endfor %}
-		</table>
+		<div class="col-md-8">
+			<table style="width:100%" class="tablecontent table-hover">
+				<thead>
+					<tr>
+						<th>Number</th>
+						<th>Your Answer</th>
+						<th>Correct Answer</th>
+					</tr>
+				</thead>
+				{% for result in results %}
+				<tbody class="tablebody ">
+					<tr> 
+						<th>{{result[0]}}</th>
+						<th>{{result[2]}}</th>
+						<th>{{result[1]}}</th>
+						<th>{{result[3]}}</th>
+					</tr>
+				</tbody>
+				{% endfor %}
+			</table>
+		</div>
 	</div>
 {% endblock %}
