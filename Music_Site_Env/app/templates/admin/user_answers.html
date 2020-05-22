@@ -1,27 +1,49 @@
 {% extends "base.html" %}
 {% block content %}
-<div id = "contain">
-	<h1>{{quiz_info[1]}}</h1>
-	<div class = "overlay">
-		<h2 class = "text">Final Mark: {{correct_counter}}/{{total}}</h2>
+<link rel="stylesheet" href="{{ url_for('static', filename='quiz_result.css')}}">
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-5">
+		</div>
+		<div class="col-md-2 tableheader">
+			<h1 style="text-align:center;">{{quiz_info[1]}}</h1>
+		</div>
+		<div class="col-md-5">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-8">
+			<table style="width:100%" class="tablecontent table-hover">
+				<thead>
+					<tr>
+						<th>Question Number</th>
+						<th>Your Answer</th>
+						<th>Correct Answer</th>
+						<th>Correct/Incorrect</th>
+					</tr>
+				</thead>
+				{% for result in results %}
+				<tbody class="tablebody ">
+					<tr>
+						<th>{{result[0]}}</th>
+						<th>{{result[2]}}</th>
+						<th>{{result[1]}}</th>
+						<th>{{result[3]}}</th>
+					</tr>
+				</tbody>
+				{% endfor %}
+			</table>
+		</div>
+		<div class="col-md-2">
+			<div class="row">
+				<div class="col-md-12 game-board">
+							<p style="font-size: 1.5em; font-weight: bold;">Final Mark: {{correct_counter}}/{{total}}</p>
+				</div>
+		</div>
 	</div>
 </div>
-	<img  style= "width:300px" src = {{quiz_info[3]}} alt = "Quiz Image">
-	<div class= "container">
-		<table style="width:100%" class= "table table-borderless table-hover table-info">
-			<tr>
-				<th><button type="button" class ="btn btn-primary">Number</button></th>
-				<th><button type="button" class ="btn btn-primary">Your Answer</button></th>
-				<th><button type="button" class ="btn btn-primary">Correct Answer</button></th>
-			</tr>
-			{% for result in results %}
-				<tr> 
-					<th>{{result[0]}}</th>
-					<th>{{result[2]}}</th>
-					<th>{{result[1]}}</th>
-					<th>{{result[3]}}</th>
-				</tr>
-			{% endfor %}
-		</table>
-	</div>
+
 {% endblock %}
+
