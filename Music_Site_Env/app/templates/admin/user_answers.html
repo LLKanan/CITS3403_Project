@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<<<<<<< HEAD
 <style>
 	.Headerpad {
       border: 0px solid;
@@ -18,6 +19,15 @@
 	<div class= "container">
 		<h2 class = "text">Final Mark: {{correct_counter}}/{{total}}</h2>
 		<div class="col-md-12">
+=======
+<div id = "contain">
+	<h1>{{quiz_info[1]}}</h1>
+	<h2>Final Mark: {{correct_counter}}/{{total}}</h2>
+</div>
+	<img  style= "width:300px" src = {{quiz_info[3]}} alt = "Quiz Image">
+	<div class= "container">
+		<div class="col-md-8">
+>>>>>>> c4db2a8f24dbe75425c7c925395607fae2c17d68
 			<table style="width:100%" class="tablecontent table-hover">
 				<thead>
 					<tr>
