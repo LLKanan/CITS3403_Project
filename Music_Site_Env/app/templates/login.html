@@ -1,31 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 
-<link rel="stylesheet" href="{{ url_for('static', filename='login.css')}}">
+
 <script type="text/javascript" src="{{ url_for('static',filename='userValidation.js')}}"></script>
 
 <div class="container-fluid">
 	<div class="row vertical-center">
-		<div class="col-md-6 col-sm-12 col-xs-12 textContainer">
-			<div class="row vertical-center">
-				<div class="col-md-3  col-sm-4 col-xs-4">
-
-					</div>
-				</div>
-				<div class="col-md-6 col-sm-4 col-xs-4">
-					<div class="welcomeMessage">
-						<h1>Welcome</h1>
-						<p>Ready to test your music knowledge ?</p>
-						<p>Login to start</p>
-					</div>
-					<div class="col-md-3 col-sm-4 col-xs-4">
-						</div>
+		<div class="col-md-6 col-sm-6 col-xs-12 textContainer">
+			<h1>Welcome</h1>
+			<div class="welcomeMessage">
+				<p>Ready to test your music knowledge ?</p>
+				<p>Login to start</p>
 			</div>
 		</div>
-		<div class="col-md-6 col-sm-12 col-xs-12">
+		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="loginContainer">
 				<form class="form-container" name="login_form" onsubmit="return validateLoginForm()" method="post">
-					<h1>Sign In</h1>
+						<h1>Sign In</h1>
 					{{ form.hidden_tag() }}
 					<div>
 						{{ form.username.label }}<br>
