@@ -1,4 +1,2 @@
-Todo Backend: commend all code
-
-TODO Frontend:
-Modify all skeleton code
+TODO: Documentation
+Add comments on front end code
