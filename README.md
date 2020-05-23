@@ -9,10 +9,6 @@ readme.md
   
 Git log showing commits from all members
 
-SourceCode with comments and attributions from any external libraries
-
-Requirements.txt listing all packages used
-
 FRONT END:
 
 Comments
