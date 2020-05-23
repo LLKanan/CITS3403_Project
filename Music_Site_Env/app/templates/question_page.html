@@ -8,7 +8,8 @@
 {% block content %}
 
 	<link rel="stylesheet" href="{{ url_for('static', filename='questionpage.css')}}">
-	<script type="text/javascript" src="{{ url_for('static',filename='userValidation.js')}}"></script>	
+	<script type="text/javascript" src="{{ url_for('static',filename='userValidation.js')}}"></script>
+	<script type="text/javascript" src="{{ url_for('static',filename='youtube.js')}}"></script>
 		<!-- <iframe width="420" height="315" src ={{question_list[current_question][2]}}></iframe> -->
 		<!-- Embedded link to YouTube song is hidden so the user can only hear audio. -->
 		<div id = "hider">
@@ -52,7 +53,6 @@
 		<div class="col-md-4 col-sm-4 col-xs-12">
 
 		</div>
-
 	<script>
 		var tag = document.createElement('script');
 
