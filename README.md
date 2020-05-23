@@ -7,9 +7,9 @@ readme.md
   
   -Instructions on how to launch from local host
   
-Got log showing commits from all members
+Git log showing commits from all members
 
-Sourcode with comments and attributions from any external libraries
+SourceCode with comments and attributions from any external libraries
 
 Requirements.txt listing all packages used
 
