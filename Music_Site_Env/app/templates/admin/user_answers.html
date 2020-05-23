@@ -2,8 +2,7 @@
 
 {% block content %}
 	<div style="padding-left: 40%;">
-		<h1 class="Headerpad">{{quiz_info[1]}}</h1>
-		<h2 class="Headerpad">Final Mark: {{correct_counter}}/{{total}}</h2>
+		<h1 class="Headerpad" style="padding-top: 20px; padding-bottom: 20px;">{{quiz_info[1]}}</h1>
 	</div>
 	<div class= "container">
 		<h2 class = "text">Final Mark: {{correct_counter}}/{{total}}</h2>
@@ -29,5 +28,8 @@
 				{% endfor %}
 			</table>
 		</div>
+	</div>
+	<div style="padding-left: 40%;">
+		<h2 class="Headerpad" style="padding-top: 20px; padding-bottom: 20px;">Final Mark: {{correct_counter}}/{{total}}</h2>
 	</div>
 {% endblock %}

@@ -23,16 +23,22 @@
 
 		</div>
 		<div class="col-md-4 col-sm-4 col-xs-12" id="format">
-			<h1>{{quiz_name}} - {{current_question + 1}}</h1>
+			<div style="padding-left: 20%;">
+				<h1 class="Headerpad" style="padding-top: 20px; padding-bottom: 20px;">{{quiz_name}} - {{current_question + 1}}</h1>
+			</div>
 			<br><br>
-			<div>Click to Play Audio</div>
-			<button onclick = "myFunction({{question_list[current_question][8]}},{{question_list[current_question][3]}})"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSxiaVVwb7cKOU1gVVtCN_lX-8UIUC-EMvTvMzjEpu-mO_StnZb&usqp=CAU" width="20%" height="20%"></button>
-			<form name = "quiz_question_form" onsubmit="return validateQuizQuestionForm()" method = "post">
-			{{ form.hidden_tag() }}
-			<br>
-			<!-- Drop-down form to select answer. -->
-			<p>{{ form.answer.label }}: <br> {{ form.answer }}</p>
-			<p id = "answer_validate_message"></p>
+			<div style="padding-left: 20%;">
+				<div class="Headerpad">
+					<div style="padding-top: 20px;">Click to Play Audio</div>
+					<button onclick = "myFunction({{question_list[current_question][8]}},{{question_list[current_question][3]}})"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSxiaVVwb7cKOU1gVVtCN_lX-8UIUC-EMvTvMzjEpu-mO_StnZb&usqp=CAU" width="20%" height="20%"></button>
+					<form name = "quiz_question_form" onsubmit="return validateQuizQuestionForm()" method = "post">
+					{{ form.hidden_tag() }}
+					<br>
+					<!-- Drop-down form to select answer. -->
+					<p style="padding-bottom: 20px;">{{ form.answer.label }}: <br> {{ form.answer }}</p>
+					<p id = "answer_validate_message"></p>
+				</div>
+			</div>
 			{% for error in form.answer.errors %}
 				<span style="color: red;">[{{ error }}]</span>
 			{% endfor %}
