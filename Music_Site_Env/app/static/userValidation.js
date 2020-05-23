@@ -3,7 +3,7 @@ function validateRegistrationForm()
 {
 	var username = document.forms["registration_form"]["username"].value;
 	var email = document.forms["registration_form"]["email"].value;
-	var	password = document.forms["registration_form"]["password"].value;
+	var password = document.forms["registration_form"]["password"].value;
 	var password2 = document.forms["registration_form"]["password2"].value;
 	var ret = true
 	//Username Validation

@@ -8,7 +8,8 @@
 {% block content %}
 
 	<link rel="stylesheet" href="{{ url_for('static', filename='questionpage.css')}}">
-	<script type="text/javascript" src="{{ url_for('static',filename='userValidation.js')}}"></script>	
+	<script type="text/javascript" src="{{ url_for('static',filename='userValidation.js')}}"></script>
+	<script type="text/javascript" src="{{ url_for('static',filename='youtube.js')}}"></script>
 		<!-- <iframe width="420" height="315" src ={{question_list[current_question][2]}}></iframe> -->
 		<!-- Embedded link to YouTube song is hidden so the user can only hear audio. -->
 		<div id = "hider">
@@ -23,10 +24,10 @@
 
 		</div>
 		<div class="col-md-4 col-sm-4 col-xs-12" id="format">
-			<h1>{{quiz_name}} - {{current_question + 1}}</h1>
+			<h1>{{quiz_name}} - Question {{current_question + 1}}</h1>
 			<br><br>
 			<div>Click to Play Audio</div>
-			<button onclick = "myFunction({{question_list[current_question][8]}},{{question_list[current_question][3]}})"><img src="https://i.imgur.com/u56cjdT.png" width="20%" height="20%"></button>
+			<button onclick = "myFunction({{question_list[current_question][8]}},{{question_list[current_question][3]}})"><img src="https://i.imgur.com/u56cjdT.png" alt = "Play Music" width="153" height="118"></button>
 			<form name = "quiz_question_form" onsubmit="return validateQuizQuestionForm()" method = "post">
 			{{ form.hidden_tag() }}
 			<br>

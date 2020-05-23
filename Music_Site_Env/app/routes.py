@@ -238,7 +238,11 @@ def remove_user(user_id):
 	edit_user = db.session.execute(query)
 	if edit_user:
 		#temp = 'Delete from user where user_id == ' + str(user_id)
-		#db.session.execute(temp) 
+		#db.session.execute(temp)
+		Results.query.filter(Results.user_id == user_id).delete()
+		db.session.commit()
+		finalResults.query.filter(finalResults.user_id == user_id).delete()
+		db.session.commit()
 		User.query.filter(User.user_id == user_id).delete()
 		db.session.commit()
 		flash("User_ID #{user_id} successfully removed".format(user_id = user_id))
