@@ -162,10 +162,10 @@ function validateQuestionForm()
 	var youtube_link = document.forms["question_form"]["youtube_link"].value;
 	var start_time = document.forms["question_form"]["start_time"].value;
 	var duration = document.forms["question_form"]["duration"].value;
-	var correct_answer = document.forms["question_form"]["correct_answer"].value;
-	var option_1 = document.forms["question_form"]["option_1"].value;
-	var option_2 = document.forms["question_form"]["option_2"].value;
-	var option_3 = document.forms["question_form"]["option_3"].value;	
+	var correct_answer = document.forms["question_form"]["correct_answer"].value.trim();
+	var option_1 = document.forms["question_form"]["option_1"].value.trim();
+	var option_2 = document.forms["question_form"]["option_2"].value.trim();
+	var option_3 = document.forms["question_form"]["option_3"].value.trim();	
 	var ret = true
 	//Youtube link validation
 	//Shorten youtube link if necessary and notify user of modification
@@ -230,6 +230,42 @@ function validateQuestionForm()
 	else
 	{
 		document.getElementById("duration_validate_message").innerHTML = null
+	}
+	//Answer validation
+	//Check if any of the options match
+	if (correct_answer == option_1)
+	{
+		ret = false
+		document.getElementById("answer_validate_message").innerHTML = "ERROR: Correct Answer and option 1 are the same"
+	}
+	else if (correct_answer == option_2)
+	{
+		ret = false
+		document.getElementById("answer_validate_message").innerHTML = "ERROR: Correct Answer and option 2 are the same"
+	}
+	else if (correct_answer == option_3)
+	{
+		ret = false
+		document.getElementById("answer_validate_message").innerHTML = "ERROR: Correct Answer and option 3 are the same"
+	}
+	else if (option_1 == option_2)
+	{
+		ret = false
+		document.getElementById("answer_validate_message").innerHTML = "ERROR: Option 1 and option 2 are the same"
+	}
+	else if (option_1 == option_3)
+	{
+		ret = false
+		document.getElementById("answer_validate_message").innerHTML = "ERROR: Option 1 and option 3 are the same"
+	}
+	else if (option_2 == option_3)
+	{
+		ret = false
+		document.getElementById("answer_validate_message").innerHTML = "ERROR: Option 2 and option 3 are the same"
+	}
+	else
+	{
+		document.getElementById("answer_validate_message").innerHTML = null
 	}
 	return ret
 }

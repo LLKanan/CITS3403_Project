@@ -9,10 +9,9 @@
 
 	<link rel="stylesheet" href="{{ url_for('static', filename='questionpage.css')}}">
 	<script type="text/javascript" src="{{ url_for('static',filename='userValidation.js')}}"></script>
-	<script type="text/javascript" src="{{ url_for('static',filename='youtube.js')}}"></script>
-		<!-- <iframe width="420" height="315" src ={{question_list[current_question][2]}}></iframe> -->
+	<script type="text/javascript" src="{{ url_for('static',filename='question_page.js')}}"></script>
 		<!-- Embedded link to YouTube song is hidden so the user can only hear audio. -->
-		<div id = "hider">
+		<div id = "hider" style = "display: none;">
 			<iframe id="player"
 				width="640" height="360"
 				src="https://www.youtube.com/embed/{{question_list[current_question][2]}}?enablejsapi=1"
@@ -25,13 +24,13 @@
 		</div>
 		<div class="col-md-4 col-sm-4 col-xs-12" id="format">
 			<div style="padding-left: 20%;">
-				<h1 class="Headerpad" style="padding-top: 20px; padding-bottom: 20px;">{{quiz_name}} - {{current_question + 1}}</h1>
+				<h1 class="Headerpad" style="padding-top: 20px; padding-bottom: 20px;">{{quiz_name}} - Question {{current_question + 1}}</h1>
 			</div>
 			<br><br>
 			<div style="padding-left: 20%;">
 				<div class="Headerpad">
 					<div style="padding-top: 20px;">Click to Play Audio</div>
-					<button onclick = "myFunction({{question_list[current_question][8]}},{{question_list[current_question][3]}})"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSxiaVVwb7cKOU1gVVtCN_lX-8UIUC-EMvTvMzjEpu-mO_StnZb&usqp=CAU" width="20%" height="20%"></button>
+					<button onclick = "myFunction({{question_list[current_question][8]}},{{question_list[current_question][3]}})"><img src="https://imgur.com/u56cjdT.png" width="20%" height="20%"></button>
 					<form name = "quiz_question_form" onsubmit="return validateQuizQuestionForm()" method = "post">
 					{{ form.hidden_tag() }}
 					<br>
@@ -51,31 +50,11 @@
 			</form>	
 		</div>
 		<div class="col-md-4 col-sm-4 col-xs-12">
-
 		</div>
 	<script>
-		var tag = document.createElement('script');
-
-		tag.src = "https://www.youtube.com/iframe_api";
-		var firstScriptTag = document.getElementsByTagName('script')[0];
-		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-		var player;
-		function onYouTubeIframeAPIReady() {
-			player = new YT.Player('player', {
-			origin : window.location.origin,
-			});
-		}
-		function myFunction(start_time,play_time){
-			player.setVolume(50)
-			player.playVideo()
-			player.seekTo(start_time)
-			setTimeout(function(){ player.pauseVideo(); }, (play_time * 1000));
-		}
-		document.getElementById("hider").style.display = "none";
+		//Script to change the next question button to submit answers on final question
 		{% if current_question+1 == question_list|length %}
-			document.getElementById("submit_answer").value = "Submit Quiz"
+			document.getElementById("submit_answer").value = "Submit Answers"
 		{% endif %}
 	</script>
-
 {% endblock %}
