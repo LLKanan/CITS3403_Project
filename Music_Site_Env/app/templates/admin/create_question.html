@@ -7,8 +7,8 @@
 
 {% block content %}
 	<link rel="stylesheet" href="{{ url_for('static', filename='createquestion.css')}}">
-	<script type="text/javascript" src="{{ url_for('static',filename='userValidation.js')}}"></script>
-	<h1 id="title">Create Question</h1>
+	<script src="{{ url_for('static',filename='userValidation.js')}}"></script>
+	<h1>Create Question</h1>
 	<form name = "question_form" onsubmit="return validateQuestionForm()" method = "post">
 		<div class="col-md-6 col-sm-6 col-xs-12 content0"> 
 			{{ form.hidden_tag() }}
@@ -25,7 +25,7 @@
 			</div>
 			<iframe id="player"
 				width="640" height="360"
-				src=""
+				src='null'
 			></iframe>
 			<br><br>
 			<div>
