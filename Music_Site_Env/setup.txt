@@ -1,3 +1,0 @@
-source venv/bin/activate
-export FLASK_APP=music_site.py(Optional step if no .flaskenv)
-flask run
