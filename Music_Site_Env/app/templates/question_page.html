@@ -8,8 +8,8 @@
 {% block content %}
 
 	<link rel="stylesheet" href="{{ url_for('static', filename='questionpage.css')}}">
-	<script type="text/javascript" src="{{ url_for('static',filename='userValidation.js')}}"></script>
-	<script type="text/javascript" src="{{ url_for('static',filename='question_page.js')}}"></script>
+	<script src="{{ url_for('static',filename='userValidation.js')}}"></script>
+	<script src="{{ url_for('static',filename='question_page.js')}}"></script>
 		<!-- Embedded link to YouTube song is hidden so the user can only hear audio. -->
 		<div id = "hider" style = "display: none;">
 			<iframe id="player"
@@ -30,24 +30,23 @@
 			<div style="padding-left: 20%;">
 				<div class="Headerpad">
 					<div style="padding-top: 20px;">Click to Play Audio</div>
-					<button onclick = "myFunction({{question_list[current_question][8]}},{{question_list[current_question][3]}})"><img src="https://imgur.com/u56cjdT.png" width="20%" height="20%"></button>
-					<form name = "quiz_question_form" onsubmit="return validateQuizQuestionForm()" method = "post">
-					{{ form.hidden_tag() }}
-					<br>
-					<!-- Drop-down form to select answer. -->
-					<p style="padding-bottom: 20px;">{{ form.answer.label }}: <br> {{ form.answer }}</p>
-					<p id = "answer_validate_message"></p>
+						<button onclick = "myFunction({{question_list[current_question][8]}},{{question_list[current_question][3]}})"><img src="https://imgur.com/u56cjdT.png" alt = "Play Song Icon" width="154" height="118"></button>
+						<form name = "quiz_question_form" onsubmit="return validateQuizQuestionForm()" method = "post">
+							{{ form.hidden_tag() }}
+							<br>
+							<!-- Drop-down form to select answer. -->
+							<p style="padding-bottom: 20px;">{{ form.answer.label }}: <br> {{ form.answer }}</p>
+							<p id = "answer_validate_message"></p>
+							{% for error in form.answer.errors %}
+								<span style="color: red;">[{{ error }}]</span>
+							{% endfor %}	
+							{% if current_question != 0%}
+								<a href="{{ url_for('start_quiz',quiz_id = quiz_id,current_question = current_question -1)}}"><input type="button" value="Previous Question" id="previous"></a>
+							{% endif %}
+							<div id="next">{{ form.submit_answer() }}</div>
+						</form>
 				</div>
 			</div>
-			{% for error in form.answer.errors %}
-				<span style="color: red;">[{{ error }}]</span>
-			{% endfor %}
-			<br><br><br><br>
-			{% if current_question != 0%}
-				<a href="{{ url_for('start_quiz',quiz_id = quiz_id,current_question = current_question -1)}}"><input type="button" value="Previous Question" id="previous"></a>
-			{% endif %}
-			<div id="next">{{ form.submit_answer() }}</div>
-			</form>	
 		</div>
 		<div class="col-md-4 col-sm-4 col-xs-12">
 		</div>
