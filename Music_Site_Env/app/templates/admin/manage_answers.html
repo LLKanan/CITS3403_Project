@@ -1,35 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-<script type="text/javascript" src="{{ url_for('static',filename='misc.js')}}"></script>
-<link rel="stylesheet" href="{{ url_for('static', filename='manage_answer.css')}}">
-<div class="container">
-	<div class="row">
-		<div class="col-md-4">
-		</div>
-		<div class="col-md-4 Headerpad">
-			<h2>User Answers</h2>
-		</div>
-		<div class="col-md-4">
-		</div>
-	</div>
-	<div class="row rowcard">
-		{% for result in results %}
-		<div class="col-md-4 hoveractive">
-			<!-- Bootstrap Card -->
-			<div class="card cardalign" style="width:300px">
-				<img src={{result[2]}} alt="Card One" class="box card-img-top">
-				<div class="card-body">
-					<h6 class="card-subtitle mb-2 text-muted">{{result[0]}}</h6>
-					<h5 class="card-title cardheading">{{result[1]}}</h5>
+<! –– Applying CSS and javascript ––>
+	<script type="text/javascript" src="{{ url_for('static',filename='misc.js')}}"></script>
+	<link rel="stylesheet" href="{{ url_for('static', filename='manage_answer.css')}}">
 
-					<a data-toggle="tooltip" data-placement="bottom" title="View User's results" href="{{ url_for('manage_answer_quiz',quiz_id = result[0])}}" class="cardheading" ; font-size: 17px;" class="card-link ">
-						<i class="fas fa-eye"></i></a>
+	<! –– Applying bootstrap container ––>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
 				</div>
+				<! –– Applying Headerpad style ––>
+					<div class="col-md-4 Headerpad">
+						<h2>User Answers</h2>
+					</div>
+					<div class="col-md-4">
+					</div>
+			</div>
+			<div class="row rowcard">
+				{% for result in results %}
+				<!-- Using hoveractive class to call javascript -->
+				<div class="col-md-4 hoveractive">
+					<!-- Applying Bootstrap Card -->
+					<div class="card cardalign" style="width:300px">
+						<img src={{result[2]}} alt="Card One" class="box card-img-top">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">{{result[0]}}</h6>
+							<h5 class="card-title cardheading">{{result[1]}}</h5>
+							<!-- Applying tooltip for icon -->
+							<a data-toggle="tooltip" data-placement="bottom" title="View User's results" href="{{ url_for('manage_answer_quiz',quiz_id = result[0])}}" class="cardheading" ; font-size: 17px;" class="card-link ">
+								<i class="fas fa-eye"></i></a>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
 			</div>
 		</div>
-		{% endfor %}
-	</div>
-</div>
 
-{% endblock %}
+		{% endblock %}
