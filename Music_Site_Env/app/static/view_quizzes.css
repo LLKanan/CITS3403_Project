@@ -1,12 +1,12 @@
-.box:hover {
-    transform: scale(1.0);
-  }
 
   .box {
     height: 200px;
     border-radius: 15px 15px 0px 0px;
     border: 1px solid;
 
+  }
+   .box:hover {
+    transform: scale(1.0);
   }
 
   .cardalign {
