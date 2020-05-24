@@ -1,7 +1,9 @@
+/* Styles the elements on the left side of the page. */
 .content0 {
     text-align: center;
     padding-top: 3%;
 }
+/* Styles the elements on the right side of the page. */
 .content1 {
     text-align: center;
     padding-top: 11%;
@@ -45,7 +47,7 @@ a:focus {
     transition: 0.5s;
     text-decoration: none;
 }
-
+/* Styles the finalise quiz button. */
 #finalise:hover {
     transition: 0.5s;
     color: black;

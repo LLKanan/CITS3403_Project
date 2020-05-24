@@ -7,7 +7,7 @@ body {
     background-color: #000000;
     color: white;
 }
-
+/* h3 elements hold navigation tabs. */
 h3 {
     width: auto;
     padding-left: 20px;
@@ -21,7 +21,7 @@ h3:hover {
     transition: 0.5s;
     background-color: #ffcd1f;
 }
-
+/* Navigation links have stylings removed. */
 h3 a {
     color: white;
     transition: 0.5s;
@@ -41,7 +41,7 @@ a:focus {
     transition: 0.5s;
     text-decoration: none;
 }
-
+/* Below three create a common button look for submissions and some page navigation. */
 input {
     background-color: black;
     border-radius: 20px;
@@ -68,13 +68,12 @@ button:hover {
     transition: 0.5s;
 }
 
-
 #header {
     text-align: left;
     background-color: #1b2022;
     width: 100.9%;
 }
-
+/* Warning message if an unauthorised user tries to access a page. */
 #warning {
     font-size: 16px;
     color: red;
@@ -108,6 +107,7 @@ button:hover {
     background-color: #1b2022;
 }
 
+/* Containers that wrap page content elements with a box. */
 .loginContainer {
     margin-left: 0%;
     margin-right: 50%;
@@ -177,7 +177,7 @@ button:hover {
     border-radius: 15px;
     background-color: #1b2022;
 }
-
+/* Pages with titles are wrapped in a box with the common style below. */
 .Headerpad {
     border: 0px solid;
     text-align: center;
@@ -227,9 +227,6 @@ button:hover {
     transform: translate(-50%, -50%);
     text-align: center;
 }
-
-
-
 
 /* Styling table content */
 .tablecontent {
