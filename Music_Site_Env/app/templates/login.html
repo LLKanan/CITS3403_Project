@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
-<! –– Applying CSS and javascript ––>
+<!--Applying CSS and javascript -->
 	<link rel="stylesheet" href="{{ url_for('static', filename='login.css')}}">
-	<script type="text/javascript" src="{{ url_for('static',filename='userValidation.js')}}"></script>
+	<script src="{{ url_for('static',filename='userValidation.js')}}"></script>
 
-	<! –– Applying bootstrap fluid container ––>
+	<!--Applying bootstrap fluid container -->
 		<div class="container-fluid">
-				<! –– Applying row and vertical-center class ––>
+				<!--Applying row and vertical-center class -->
 			<div class="row vertical-center">
-				<! –– Dividing row into two (textContainer & loginContainer) ––>
+				<!--Dividing row into two (textContainer & loginContainer) -->
 					<div class="col-md-6 col-sm-12 col-xs-12 textContainer">
-						<! –– textContainer div ––>
+						<!--textContainer div -->
 							<div class="row vertical-center">
 								<div class="col-md-3 col-sm-4 col-xs-4">
 								</div>
@@ -26,7 +26,7 @@
 							</div>
 					</div>
 					<div class="col-md-6 col-sm-12 col-xs-12">
-						<! –– loginContainer div ––>
+						<!--loginContainer div -->
 							<div class="loginContainer">
 								<form class="form-container" name="login_form" onsubmit="return validateLoginForm()" method="post">
 									<h1>Sign In</h1>
@@ -48,11 +48,11 @@
 										{% endfor %}
 									</div>
 									<p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-									<p style="text-align: center" ;>{{ form.submit() }}</p><br>
+									<p style="text-align: center;">{{ form.submit() }}</p><br>
 									<p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
 								</form>
 							</div>
 					</div>
 			</div>
 		</div>
-		{% endblock %}
+{% endblock %}
