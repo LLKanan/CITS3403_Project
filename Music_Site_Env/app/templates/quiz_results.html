@@ -1,43 +1,46 @@
 {% extends "base.html" %}
 {% block content %}
-<link rel="stylesheet" href="{{ url_for('static', filename='quiz_result.css')}}">
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-5">
+<! –– Applying bootstrap fluid container ––>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-5">
+			</div>
+			<! –– Applying tableheader style ––>
+				<div class="col-md-2 tableheader">
+					<h1 style="text-align:center;">{{quiz_info[1]}}</h1>
+					<h2 style="text-align:center;">Final Mark: {{correct_counter}}/{{total}}</h2>
+				</div>
+				<div class="col-md-5">
+				</div>
 		</div>
-		<div class="col-md-2 tableheader">
-			<h1 style="text-align:center;">{{quiz_info[1]}}</h1>
-			<h2 style="text-align:center;">Final Mark: {{correct_counter}}/{{total}}</h2>
-		</div>
-		<div class="col-md-5">
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-2">
-		</div>
-		<div class="col-md-8">
-			<table style="width:100%" class="tablecontent table-hover">
-				<thead>
-					<tr>
-						<th>Question Number</th>
-						<th>Your Answer</th>
-						<th>Correct Answer</th>
-						<th>Correct/Incorrect</th>
-					</tr>
-				</thead>
-				{% for result in results %}
-				<tbody class="tablebody ">
-					<tr>
-						<th>{{result[0]}}</th>
-						<th>{{result[2]}}</th>
-						<th>{{result[1]}}</th>
-						<th>{{result[3]}}</th>
-					</tr>
-				</tbody>
-				{% endfor %}
-			</table>
+		<div class="row">
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-8">
+				<! –– Applying table-hover style ––>
+					<table style="width:100%" class="tablecontent table-hover">
+						<thead>
+							<tr>
+								<th>Question Number</th>
+								<th>Your Answer</th>
+								<th>Correct Answer</th>
+								<th>Correct/Incorrect</th>
+							</tr>
+						</thead>
+						{% for result in results %}
+						<! –– Applying tablebody style ––>
+							<tbody class="tablebody ">
+								<tr>
+									<th>{{result[0]}}</th>
+									<th>{{result[2]}}</th>
+									<th>{{result[1]}}</th>
+									<th>{{result[3]}}</th>
+								</tr>
+							</tbody>
+							{% endfor %}
+					</table>
+			</div>
+
 		</div>
 
-</div>
-
-{% endblock %}
+		{% endblock %}
