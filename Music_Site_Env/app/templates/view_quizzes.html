@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<script type="text/javascript" src="{{ url_for('static',filename='misc.js')}}"></script>
+<script src="{{ url_for('static',filename='misc.js')}}"></script>
 <link rel="stylesheet" href="{{ url_for('static', filename='view_quizzes.css')}}">
 <div class="container">
 	<div class="row">
@@ -19,7 +19,7 @@
 			<div class="col-md-4 hoveractive">
 				<!-- Bootstrap Card -->
 				<div class="card cardalign" style="width:300px">
-					<img src={{result[2]}} alt="Card One" class="box card-img-top">
+					<img src="{{result[2]}}" alt="Card One" class="box card-img-top">
 					<div class="card-body">
 						<h6 class="card-subtitle mb-2 text-muted">{{result[0]}}</h6>
 						<h5 class="card-title cardheading">{{result[1]}}</h5>
@@ -33,4 +33,5 @@
 			{% endfor %}
 		</div>
 	</div>
+</div>
 {% endblock %}
