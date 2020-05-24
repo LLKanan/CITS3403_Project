@@ -1,46 +1,37 @@
 {% extends "base.html" %}
+
 {% block content %}
-<! –– Applying bootstrap fluid container ––>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-5">
-			</div>
-			<! –– Applying tableheader style ––>
-				<div class="col-md-2 tableheader">
-					<h1 style="text-align:center;">{{quiz_info[1]}}</h1>
-					<h2 style="text-align:center;">Final Mark: {{correct_counter}}/{{total}}</h2>
-				</div>
-				<div class="col-md-5">
-				</div>
+<script src="{{ url_for('static',filename='misc.js')}}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='view_quizzes.css')}}">
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
 		</div>
-		<div class="row">
-			<div class="col-md-2">
-			</div>
-			<div class="col-md-8">
-				<! –– Applying table-hover style ––>
-					<table style="width:100%" class="tablecontent table-hover">
-						<thead>
-							<tr>
-								<th>Question Number</th>
-								<th>Your Answer</th>
-								<th>Correct Answer</th>
-								<th>Correct/Incorrect</th>
-							</tr>
-						</thead>
-						{% for result in results %}
-						<! –– Applying tablebody style ––>
-							<tbody class="tablebody ">
-								<tr>
-									<th>{{result[0]}}</th>
-									<th>{{result[2]}}</th>
-									<th>{{result[1]}}</th>
-									<th>{{result[3]}}</th>
-								</tr>
-							</tbody>
-							{% endfor %}
-					</table>
-			</div>
-
+		<div class="col-md-4 Headerpad">
+			<h2>List of Quizzes</h2>
 		</div>
-
-		{% endblock %}
+		<div class="col-md-4">
+		</div>
+	</div>
+	<div class="container">
+		<div class="row rowcard">
+			{% for result in results %}
+			<div class="col-md-4 hoveractive">
+				<!-- Bootstrap Card -->
+				<div class="card cardalign" style="width:300px">
+					<img src="{{result[2]}}" alt="Card One" class="box card-img-top">
+					<div class="card-body">
+						<h6 class="card-subtitle mb-2 text-muted">{{result[0]}}</h6>
+						<h5 class="card-title cardheading">{{result[1]}}</h5>
+						<a data-toggle="tooltip" data-placement="bottom" title="Play Quiz"
+						href="{{ url_for('start_quiz',quiz_id = result[0], current_question = 0)}}"
+						style="padding-left: 50%; font-size: 17px;" class="card-link "><i
+								class="far fa-play-circle"></i></a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+{% endblock %}
