@@ -32,3 +32,17 @@ User Features:
 -User has the ability to replay sound clip an unlimited amount of times
 -User has the ability to go to previous questions whenever they wish
 
+Setup Guide for localhost
+1.Ensure python3 is installed
+2.Extract zip folder
+3.Change directory to Music_Site_Env in extracted folder
+4.Run command "python3 -m venv venv" in terminal to initialise venv
+5.Run command "source venv/bin/activate" in terminal to activate venv
+6.Run command "pip install -r requirements.txt" to install all requirements
+7.Run command "flask db init" to initialise database
+8.Run command 'flask db migrate -m "users table"' for database migration
+9.Run command "flask db upgrade" for database to apply changes to database
+10. Run command "python3 database.py" to initialise admin account (username : admin | pssword : admin)
+11. flask run
+NOTE:Use http://localhost:5000/ instead of http://127.0.0.1:5000/ due to youtube iframeapi block on non registered domains
+
