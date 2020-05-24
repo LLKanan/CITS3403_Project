@@ -28,10 +28,10 @@
 				{% for result in results %}
 				<tbody class="tablebody ">
 					<tr> 
-						<th><option value ="{{result[0]}}">{{result[0]}}</option></th>
-						<th><option value ="{{result[1]}}">{{result[1]}}</option></th>
+						<th>{{result[0]}}</th>
+						<th>{{result[1]}}</th>
 						<th><img style = "width: 300px" src = "{{result[2]}}" alt = "Image for quiz"></th>
-						<th><option value ="{{result[3]}}">{{result[3]}}</option></th>
+						<th>{{result[3]}}</th>
 						<th><a href="{{ url_for('view_answers',quiz_id = result[0],user_id = current_user.get_id()) }}">View Answers</a></th>
 					</tr>
 				</tbody>
