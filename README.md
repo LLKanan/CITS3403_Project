@@ -1,4 +1,9 @@
+# CITS3403 Project : Music Quiz Website
+
+By: Benjamin Nguyen(22246919 | LLKanan), Zac(22717772 | Blankest), Stephen(22586578 | Fmkunle), Pauline(22550007 | PaulineG9)
+
 # Design of Application
+
 Our application is a music quiz website.
 
 We decided to stream the music off of youtube for the purposes of our quiz, we did this by utilising the youtube iframeplayer api.
