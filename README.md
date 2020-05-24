@@ -1,8 +1,13 @@
 # Design of Application
 Our application is a music quiz website.
+
 We decided to stream the music off of youtube for the purposes of our quiz, we did this by utilising the youtube iframeplayer api.
+
 As for the answer options for our quizzes we opted to go with multiple choice quiz with four options and automated marking.
+
 For our database we decided to utilise sqlite as we were just running our site from localhost. 
+
+NOTE:5 Quizzes + 6 Users + Some Results.db will be the database used in the demonstration
 ## Admin Features
 * Ability to create new quizzes
 * Ability to toggle the visibility(to users) of a quiz
@@ -84,6 +89,9 @@ NOTE: user_id 0 is reserved for the admin, database is initialised with user_id 
 11. flask run
 
 NOTE:Use http://localhost:5000/ instead of http://127.0.0.1:5000/ due to youtube iframeapi block on non registered domains
+
+NOTE: Databse initialised only has admin
+
 # Final Distribution of workload:
 * Ben:
   * Documentation: All documentation
