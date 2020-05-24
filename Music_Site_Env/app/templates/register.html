@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-<! –– Applying CSS and javascript ––>
-	<script type="text/javascript" src="{{ url_for('static',filename='userValidation.js')}}"></script>
+<!-- Applying CSS and javascript -->
+	<script src="{{ url_for('static',filename='userValidation.js')}}"></script>
 	<link rel="stylesheet" href="{{ url_for('static', filename='Registration.css')}}">
 
-	<! –– Applying bootstrap fluid container ––>
+	<!-- Applying bootstrap fluid container -->
 		<div class="container-fluid">
-			<! –– Applying alignTop class ––>
+			<!-- Applying alignTop class -->
 				<div class="alignTop">
 					<div class="row">
-						<! –– Dividing row and column into 4 (md) ––>
+						<!-- Dividing row and column into 4 (md) -->
 							<div class="col-md-4 col-sm-4 col-xs-12">
 							</div>
 							<div class="col-md-4 col-sm-4 col-xs-12">
-								<! –– Applying form-container-reg ––>
+								<!-- Applying form-container-reg -->
 									<form class="form-container-reg" name="registration_form" onsubmit="return validateRegistrationForm()" method="post">
 										{{ form.hidden_tag() }}
 										<h1>Regisration Form</h1>
@@ -58,4 +58,4 @@
 					</div>
 				</div>
 		</div>
-		{% endblock %}
+{% endblock %}
