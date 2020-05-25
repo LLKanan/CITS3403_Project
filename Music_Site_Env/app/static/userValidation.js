@@ -153,6 +153,7 @@ function checkVidID()
 	else
 	{
 		document.getElementById("youtube_link_validate_message").innerHTML = "ERROR: Invalid link must be of format https://youtu.be/video_id or https://www.youtube.com/watch?v=video_id"
+		ret = false
 	}
 }
 
